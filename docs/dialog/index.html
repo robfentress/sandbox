@@ -134,7 +134,7 @@
             modalOverlay.classList.toggle("closed");
             notdialog.setAttribute("aria-hidden", "true");
             modal.addEventListener('keydown', trapFocus);
-            innerDoc.focus();
+            closeButton.focus();
         }
 
         var close = function() {
