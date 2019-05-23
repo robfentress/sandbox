@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [aria-expanded='true'], [aria-pressed='true'] {
+            border-style: inset;
+        }
+
+        .hidden {
+            display:none;
+        }
+
+        .sronly {
+            border: 0;
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute !important;
+            width: 1px;
+            word-wrap: normal !important;
+        }
+    </style>
+</head>
+<body>
+<h1>Expand Buttons</h1>
+<button id="init">Initial focus target</button>
+
+<h2>Testing Procedure</h2>
+<ol>
+    <li>Move virtual cursor to button from before the button and note what is surfaced.</li>
+    <li>Activate the button and note what is surfaced.</li>
+    <li>Activate the button again and note what is surfaced.</li>
+
+    <li>Activate the button and note what is surfaced.</li>
+    <li>Move virtual cursor to before the button.  Then move the virtual cursor back to the button and note what is surfaced.</li>
+    <li>Activate the button again and note what is surfaced.</li>
+    <li>Move virtual cursor to before the button.  Then move the virtual cursor back to the button and note what is surfaced.</li>
+
+    <li>Shift-tab to focus target before button, tab back to the button, and note what is surfaced.</li>
+    <li>Activate the button and note what is surfaced.</li>
+    <li>Shift-tab to focus target before button, tab back to the button, and note what is surfaced.</li>
+    <li>Activate the button and note what is surfaced.</li>
+</ol>
+
+<h2>Example 1</h2>
+<p>Only changes first word of button text, which is wrapped in a span.</p>
+<button id="ex1" onclick="toggleButton(this);"><span>Show </span>Menu</button>
+
+<h2>Example 2</h2>
+<p>Only toggles aria-expanded.</p>
+<button aria-expanded="false" id="ex2" onclick="toggleButton(this);">Menu</button>
+
+<h2>Example 3</h2>
+<p>Changes first word of button text, which is wrapped in a span, <em>and</em> toggles aria-expanded.</p>
+<button aria-expanded="false" id="ex3" onclick="toggleButton(this);"><span>Show </span>Menu</button>
+
+<h2>Example 4</h2>
+<p>Only changes aria-pressed.</p>
+<button aria-pressed="false" id="ex4" onclick="toggleButton(this);">Show Menu</button>
+
+<h2>Example 5</h2>
+<p>Uses switch role with aria-checked.</p>
+<button type="button" role="switch" aria-checked="false" id="ex5" onclick="toggleButton(this);">Show Menu</button>
+
+<h2>Example 6</h2>
+<p>Toggles aria-pressed <em>and</em> aria-expanded.</p>
+<button aria-expanded="false" aria-pressed="false" id="ex6" onclick="toggleButton(this);"><span>Show </span>Menu</button>
+
+<h2>Example 7</h2>
+<p>Replaces the entire text of button using innerHTML, but the text to be added is wrapped in a span. The original text in the button is not wrapped in a span, though.</p>
+<button id="ex7" onclick="toggleButton(this);">Show Menu</button>
+
+<h2>Example 8</h2>
+<p>Hides and reveals text and sets aria-expanded.</p>
+<button aria-expanded="false" id="ex8" onclick="toggleButton(this);"><span class="show sronly">Show </span><span class="close hidden">Close </span><span class="menu">Menu</span></button>
+
+
+<h2>Example 9</h2>
+<p>There are two buttons and when you click on one, it makes it invisible, makes the other one visible and sets focus to it.  It also toggles the value of aria-expanded.</p>
+<button id="ex9show" onclick="showMenu(this);" class="" aria-expanded="false">Show Menu</button>
+<button id="ex9hide" onclick="hideMenu(this);" class="hidden" aria-expanded="false">Hide Menu</button>
+
+
+<h2>Example 10</h2>
+<p>Only changes button text.</p>
+<button id="ex10" onclick="toggleButton(this);">Show Menu</button>
+
+<h2>Example 11</h2>
+<p>Replaces the entire text of button using innerHTML, but the text to be added is wrapped in a span.  The text in the button is wrapped in a span at the beginning as well, which makes it different from 7.</p>
+<button id="ex11" onclick="toggleButton(this);"><span>Show Menu</span></button>
+
+<h2>Example 12</h2>
+<p>Replaces the entire text of an anchor tag (with role="button") using innerHTML</p>
+<a href="javascript:;" id="ex12" onclick="toggleButton(this);" role="button">Show Menu</a>
+
+
+<h2>Example 13</h2>
+<p>Only changes button text but blurs and then refocuses button.</p>
+<button id="ex13" onclick="toggleButton(this);">Show Menu</button>
+
+<h2>Example 14</h2>
+<p>Only changes button text but sets focus to link inside a named section tag.</p>
+<button id="ex14" onclick="toggleButton(this);">Show Menu</button>
+<section aria-label="drawer">
+    <a href="x.html" id="after">Link in drawer</a>
+</section>
+
+<h2>Example 15</h2>
+<p>Only changes button text but sets focus to link inside a named group.</p>
+<button id="ex15" onclick="toggleButton(this);">Show Menu</button>
+<div role="group" aria-label="drawer">
+    <a href="x.html" id="after2">Link in drawer</a>
+</div>
+
+
+<script>
+var ex1Hidden = true;
+var ex2Hidden = true;
+var ex3Hidden = true;
+var ex4Hidden = true;
+var ex5Hidden = true;
+var ex6Hidden = true;
+var ex7Hidden = true;
+var ex8Hidden = true;
+var ex10Hidden = true;
+var ex11Hidden = true;
+var ex12Hidden = true;
+var ex13Hidden = true;
+var ex14Hidden = true;
+var ex15Hidden = true;
+var state;
+
+function toggleButton(btn) {
+  switch (btn.getAttribute("id")) {
+    case "ex1":
+      ex1Hidden = !ex1Hidden;
+      state = btn.getElementsByTagName("span")[0];
+      if (ex1Hidden) {
+        state.innerHTML = "Show ";
+      } else {
+        state.innerHTML = "Hide ";
+      }
+      break;
+    case "ex2":
+      btn.setAttribute('aria-expanded', ex2Hidden);
+      ex2Hidden = !ex2Hidden;
+      break;
+    case "ex3":
+      btn.setAttribute('aria-expanded', ex3Hidden);
+      ex3Hidden = !ex3Hidden;
+      state = btn.getElementsByTagName("span")[0];
+      if (ex3Hidden) {
+        state.innerHTML = "Show ";
+      } else {
+        state.innerHTML = "Hide ";
+      }
+      break;
+    case "ex4":
+      btn.setAttribute('aria-pressed', ex4Hidden);
+      ex4Hidden = !ex4Hidden;
+      break;
+    case "ex5":
+      btn.setAttribute('aria-checked', ex5Hidden);
+      ex5Hidden = !ex5Hidden;
+      break;
+    case "ex6":
+      btn.setAttribute('aria-pressed', ex6Hidden);
+      btn.setAttribute('aria-expanded', ex6Hidden);
+      ex6Hidden = !ex6Hidden;
+      break;
+    case "ex7":
+      if (ex7Hidden) {
+        btn.innerHTML = "<span>Hide Menu</span>";
+      } else {
+        btn.innerHTML = "<span>Show Menu</span>";
+      }
+      ex7Hidden = !ex7Hidden;
+      break;
+    case "ex8":
+      btn.setAttribute('aria-expanded', ex8Hidden);
+      if (ex8Hidden) {
+        //Remove hidden from close span
+        btn.querySelector('.close').className = btn.querySelector('.close').className.replace(/\bhidden\b/g, "");
+        //Add sronly to menu span
+        btn.querySelector('.menu').className += ' sronly';
+        //Add hidden to show span
+        btn.querySelector('.show').className += ' hidden';
+      } else {
+        //Remove hidden from show span
+        btn.querySelector('.show').className = btn.querySelector('.show').className.replace(/\bhidden\b/g, "");
+        //Remove sronly from menu span
+        btn.querySelector('.menu').className = btn.querySelector('.menu').className.replace(/\bsronly\b/g, "");
+        //Add hidden to close span
+        btn.querySelector('.close').className += ' hidden';
+      }
+      ex8Hidden = !ex8Hidden;
+      break;
+    case "ex10":
+        ex10Hidden = !ex10Hidden;
+        if (ex10Hidden) {
+          btn.innerHTML = "Show Menu";
+        } else {
+          btn.innerHTML = "Hide Menu";
+        }
+        break;
+
+      case "ex11":
+          if (ex11Hidden) {
+              btn.innerHTML = "<span>Hide Menu</span>";
+          } else {
+              btn.innerHTML = "<span>Show Menu</span>";
+          }
+          ex11Hidden = !ex11Hidden;
+          break;
+
+      case "ex12":
+          if (ex12Hidden) {
+              btn.innerHTML = "Hide Menu";
+          } else {
+              btn.innerHTML = "Show Menu";
+          }
+          ex12Hidden = !ex12Hidden;
+          break;
+
+      case "ex13":
+          btn.blur();
+          if (ex13Hidden) {
+              btn.innerHTML = "Hide Menu";
+          } else {
+              btn.innerHTML = "Show Menu";
+          }
+          btn.focus();
+          ex13Hidden = !ex13Hidden;
+          break;
+
+      case "ex14":
+          if (ex14Hidden) {
+              btn.innerHTML = "Hide Menu";
+          } else {
+              btn.innerHTML = "Show Menu";
+          }
+          document.getElementById("after").focus();
+          ex14Hidden = !ex14Hidden;
+          break;
+      case "ex15":
+          if (ex15Hidden) {
+              btn.innerHTML = "Hide Menu";
+          } else {
+              btn.innerHTML = "Show Menu";
+          }
+          document.getElementById("after2").focus();
+          ex15Hidden = !ex15Hidden;
+          break;
+  }
+}
+
+function showMenu(btn) {
+  //console.log('show');
+  btn.setAttribute('aria-expanded', "true");
+  btn.className += ' hidden';
+  document.querySelector('#ex9hide').className = document.querySelector('#ex9hide').className.replace(/\bhidden\b/g, "");
+  document.querySelector('#ex9hide').focus();
+  document.getElementById('ex9hide').setAttribute('aria-expanded', "true");
+}
+
+function hideMenu(btn) {
+  btn.setAttribute('aria-expanded', "false");
+  btn.className += ' hidden';
+  document.querySelector('#ex9show').className = document.querySelector('#ex9show').className.replace(/\bhidden\b/g, "");
+  document.querySelector('#ex9show').focus();
+  document.getElementById('ex9show').setAttribute('aria-expanded', "false");
+}
+
+</script>
+</body>
+</html>

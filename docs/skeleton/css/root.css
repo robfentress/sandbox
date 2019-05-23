@@ -1,0 +1,30 @@
+
+
+@media (min-width: 701px) {
+    #actions > ul {
+        display: block;
+        padding-left: 0;
+    }
+
+    #actions > ul > li {
+        list-style: none;
+        display: inline-block;
+    }
+}
+
+/*#menuDrawer ul li {
+    list-style: none;
+}*/
+
+#vt_logo img {
+    display: block;
+    padding: 0;
+    max-width: 192px;
+}
+
+.hidden {
+    display:none;
+}
+[insert] {
+    opacity:.1;
+}

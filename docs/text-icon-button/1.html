@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Icon button</title>
+    <style>
+        .vt-nav-toggle {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+
+            color: #e87722;
+            background-color: transparent;
+            width: auto;
+            padding: 0;
+            z-index: 99;
+            position: relative;
+            border: none;
+            cursor: pointer;
+        }
+
+        .vt-nav-toggleLabel {
+            position: relative;
+            /*display: none;*/
+            font-family: "gineso-condensed", sans-serif;
+            font-weight: 600;
+            font-size: 1em;
+            font-style: italic;
+            letter-spacing: 0.075em;
+            line-height: 1;
+            color: black;
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+
+        @media screen and (min-width: 768px) {
+            .vt-nav-toggleLabel {
+                display: inline-block;
+                vertical-align: text-bottom;
+            }
+        }
+
+        .svg-inline--fa {
+            /*display: inline-block;*/
+            font-size: inherit;
+            height: 1em;
+            overflow: visible;
+            vertical-align: -.125em;
+        }
+
+        .svg-inline--fa.fa-w-14 {
+            width: 0.875em;
+        }
+
+        @media screen and (min-width: 576px) {
+            .vt-nav-toggle .fa-bars, .vt-nav-toggle .fa-times {
+                display: inline-block;
+                vertical-align: text-bottom;
+                font-size: 1.5em;
+            }
+        }
+
+        svg:not(:root).svg-inline--fa {
+            overflow: visible;
+        }
+
+        #vt_logo img {
+            display: block;
+            padding: 0;
+            max-width: 192px;
+        }
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+
+
+        .hidden {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div id="vt_logo">
+        <a href="https://vt.edu"><img alt="virginia tech home" src="../skeleton/images/logo-maroon.svg"></a>
+    </div>
+</header>
+<nav aria-label="Site Navigation">
+    <button class="vt-nav-toggle menu-open" id="button" aria-label="Menu" onclick="toggle(this);" aria-expanded="false">
+        <span class="vt-nav-toggleLabel" aria-hidden="true" id="menuText">MENU</span>
+        <span id="openIcon" class="">
+            <svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" data-prefix="far" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="" focusable="false"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg>
+        </span>
+        <span id="closeIcon" class="hidden">
+            <svg class="svg-inline--fa fa-times fa-w-12" aria-hidden="true" data-prefix="far" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""  focusable="false"><path fill="currentColor" d="M231.6 256l130.1-130.1c4.7-4.7 4.7-12.3 0-17l-22.6-22.6c-4.7-4.7-12.3-4.7-17 0L192 216.4 61.9 86.3c-4.7-4.7-12.3-4.7-17 0l-22.6 22.6c-4.7 4.7-4.7 12.3 0 17L152.4 256 22.3 386.1c-4.7 4.7-4.7 12.3 0 17l22.6 22.6c4.7 4.7 12.3 4.7 17 0L192 295.6l130.1 130.1c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17L231.6 256z"></path></svg>
+        </span>
+    </button>
+    <a href="index.html">test</a>
+    <!--<div id="vt_offcanvas_nav" role="group" aria-label="vt.edu menu" class="open">
+        <span id="menuTitle" class="vt-navTitle">vt.edu</span>
+
+        &lt;!&ndash; Draws the top navigation for media-building&ndash;&gt;
+
+
+        <ul id="vt_main_nav">
+
+
+            <li class="nav-item has-submenu">
+                <div class="link-wrapper">
+                    <a href="/content/vt_edu/en/about.html" class="">About</a>
+                    <button class="fold-icon" onclick="javascript:foldAction(this);" aria-expanded="false">
+                        <span aria-hidden="true"><svg class="svg-inline--fa fa-times fa-w-12" aria-hidden="true" data-prefix="far" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M231.6 256l130.1-130.1c4.7-4.7 4.7-12.3 0-17l-22.6-22.6c-4.7-4.7-12.3-4.7-17 0L192 216.4 61.9 86.3c-4.7-4.7-12.3-4.7-17 0l-22.6 22.6c-4.7 4.7-4.7 12.3 0 17L152.4 256 22.3 386.1c-4.7 4.7-4.7 12.3 0 17l22.6 22.6c4.7 4.7 12.3 4.7 17 0L192 295.6l130.1 130.1c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17L231.6 256z"></path></svg>
+                            &lt;!&ndash; <span class="far fa-times"></span> &ndash;&gt;</span>
+                        <span class="sr-only">About Submenu Toggle</span>
+                    </button>
+                </div>
+                <ul class="submenu" aria-label="About Submenu">
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/facts.html">Virginia Tech Quick Facts</a>
+                    </li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/leadership.html">University Leaderchip</a>
+                    </li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/history-traditions.html">History &amp;
+                        Traditions</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/notable-alumni.html">Notable Alumni</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/in-the-community.html">Virginia Tech in the
+                        Community</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/inclusivevt.html">InclusiveVT</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/career-professional-development.html">Career
+                        &amp; Professional Development</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/about/kitchen-sink.html">Kitchen Sink</a></li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item has-submenu">
+                <div class="link-wrapper">
+                    <a href="/content/vt_edu/en/academics.html" class="">Academics</a>
+                    <button class="fold-icon" onclick="javascript:foldAction(this);" aria-expanded="false">
+                        <span aria-hidden="true"><svg class="svg-inline--fa fa-times fa-w-12" aria-hidden="true" data-prefix="far" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M231.6 256l130.1-130.1c4.7-4.7 4.7-12.3 0-17l-22.6-22.6c-4.7-4.7-12.3-4.7-17 0L192 216.4 61.9 86.3c-4.7-4.7-12.3-4.7-17 0l-22.6 22.6c-4.7 4.7-4.7 12.3 0 17L152.4 256 22.3 386.1c-4.7 4.7-4.7 12.3 0 17l22.6 22.6c4.7 4.7 12.3 4.7 17 0L192 295.6l130.1 130.1c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17L231.6 256z"></path></svg>
+                            &lt;!&ndash; <span class="far fa-times"></span> &ndash;&gt;</span>
+                        <span class="sr-only">Academics Submenu Toggle</span>
+                    </button>
+                </div>
+                <ul class="submenu" aria-label="Academics Submenu">
+                    <li class="nav-item"><a href="/content/vt_edu/en/academics/majors.html">Majors</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/academics/departments-colleges.html">Departments
+                        and Colleges</a></li>
+                    <li class="nav-item"><a href="/content/vt_edu/en/academics/graduate-studies.html">Graduate
+                        Studies</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="/content/vt_edu/en/admissions.html">Admissions &amp; Cost</a></li>
+            <li class="nav-item"><a href="/content/vt_edu/en/campus-life.html">Campus Life</a></li>
+            <li class="nav-item"><a href="/content/vt_edu/en/research.html">Research</a></li>
+        </ul>
+        <ul class="vt-actions-nav" role="menu" aria-label="Actions Menu">
+            <li class="vt-vtHomeLink">
+                <a href="/content/vt_edu/en/index.html">Virginia Tech Home</a>
+            </li>
+            <li class="common-links">
+                <span class="vt-common-item"><a class="vt-common-link" href="#apply">Apply</a></span>
+                <span class="vt-common-item"><a class="vt-common-link" href="#visit">Visit</a></span>
+                <span class="vt-common-item"><a class="vt-common-link" href="#give">Give</a></span>
+                <span class="vt-common-item"><a class="vt-common-link" href="#shop">Shop</a></span>
+            </li>
+            <li class="vt-resources-for-wrapper d-md-none">
+                <div class="vt-nav-resources-wrapper">
+                    <button id="nav_resources_toggle" class="vt-resources-toggle" aria-haspopup="true" aria-controls="nav_resources_options" aria-expanded="false" aria-label="Resources Menu">
+                        Resources for
+                        <svg class="svg-inline--fa fa-chevron-down fa-w-14" aria-hidden="true" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                            <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path>
+                        </svg>&lt;!&ndash; <span class="far fa-chevron-down"></span> &ndash;&gt;</button>
+                    <ul id="nav_resources_options" role="group" class="vt-resources-options closed" aria-labelledby="nav_resources_toggle">
+                        <li role="none presentation" class="vt-resources-item">
+                            <a role="menuitem" class="vt-resources-item-link" href="#futureStudents">Future Students</a>
+                        </li>
+                        <li role="none presentation" class="vt-resources-item">
+                            <a role="menuitem" class="vt-resources-item-link" href="#currentStudents">Current
+                                Students</a></li>
+                        <li role="none presentation" class="vt-resources-item">
+                            <a role="menuitem" class="vt-resources-item-link" href="#families">Parents and Families</a>
+                        </li>
+                        <li role="none presentation" class="vt-resources-item">
+                            <a role="menuitem" class="vt-resources-item-link" href="#facultyStaff">Faculty and Staff</a>
+                        </li>
+                        <li role="none presentation" class="vt-resources-item">
+                            <a role="menuitem" class="vt-resources-item-link" href="#alumni">Alumni</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+
+    </div>-->
+</nav>
+<script type="text/javascript">
+    var opened = false;
+    var opener = document.getElementById("openIcon");
+    var closer = document.getElementById("closeIcon");
+    function toggle(evt) {
+        if (opened === false) {
+            console.log("opening");
+            opener.className += " hidden";
+            closer.className = closer.className.replace(/\bhidden\b/g, "");
+            evt.setAttribute('aria-expanded', "true");
+            //evt.setAttribute('aria-label', "Close Menu");
+            opened = true;
+        } else {
+            console.log("closing");
+            closer.className += " hidden";
+            opener.className = opener.className.replace(/\bhidden\b/g, "");
+            evt.setAttribute('aria-expanded', "false");
+            //evt.setAttribute('aria-label', "Open Menu");
+            opened = false;
+        }
+    }
+</script>
+</body>
+</html>

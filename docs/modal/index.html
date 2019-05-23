@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dialog[aria-hidden="true"] {
+            display: none;
+        }
+
+        #dialog[aria-hidden="false"] {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="before"><p>some text before</p>
+
+<nav aria-label="Main Menu">
+    <button id="showModal" aria-expanded="false" aria-controls="dialog">Menu</button>
+<section
+     id="dialog" aria-labelledby="ModalTitle">
+    <!--<div role="document">-->
+        <!--<button id="close">close</button>-->
+        <h1 id="ModalTitle">Menu Links</h1>
+        <p>I am some content</p>
+    <!--</div>-->
+</section>
+</nav>
+<div id="after"><button>post-submit</button>
+<p>some text before</p></div>
+<script>
+  var showModal = document.getElementById("showModal");
+  var dialog = document.getElementById("dialog");
+  var close = document.getElementById("close");
+  var before = document.getElementById("before");
+  var after = document.getElementById("after");
+  showModal.onclick = function () {
+    //dialog.setAttribute('aria-hidden', 'false');
+    //dialog.setAttribute('aria-modal', 'true');
+    close.focus();
+    /*before.setAttribute('aria-hidden', 'true');
+    after.setAttribute('aria-hidden', 'true');*/
+    /*before.querySelector('button, fieldset, input, optgroup, option, select, textarea').setAttribute('disabled',
+      'true');
+    after.querySelector('button, fieldset, input, optgroup, option, select, textarea').setAttribute('disabled',
+      'true');*/
+  }
+  close.onclick = function () {
+    /*before.setAttribute('aria-hidden', 'false');
+    after.setAttribute('aria-hidden', 'false');*/
+    /*before.querySelector('button, fieldset, input, optgroup, option, select, textarea').removeAttribute('disabled');
+    after.querySelector('button, fieldset, input, optgroup, option, select, textarea').removeAttribute('disabled');*/
+    showModal.focus();
+    /*dialog.setAttribute('aria-hidden', 'true');*/
+  }
+</script>
+</body>
+</html>

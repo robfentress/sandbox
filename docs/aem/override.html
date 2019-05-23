@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>No link text</title>
+</head>
+
+<body>
+    <style>
+        .vt-list .vt-num-col-1 .item>ul>li .vt-list-title {
+            border-left: .15em solid rgba(139, 31, 65, 0.8);
+            margin-left: -.15em;
+            padding-left: .5em;
+        }
+        
+        .vt-text dl dt a {
+            text-decoration: none
+        }
+        
+        .vt-text dl dd {
+            margin-bottom: 2em;
+        }
+        
+        .vt-list .vt-num-col-1 .item>ul>li .vt-list-title a,
+        .vt-list .vt-num-col-2 .item>ul>li .vt-list-title a,
+        .vt-list .vt-num-col-3 .item>ul>li .vt-list-title a,
+        .vt-list .vt-num-col-4 .item>ul>li .vt-list-title a,
+        .vt-list .vt-num-col-6 .item>ul>li .vt-list-title a,
+        .vt_feed_items>li .vt_feed_iTitle a {
+            color: #c64600;
+        }
+        
+        .vt-rawhtml ul>li ol>li>ul>li::before,
+        .vt-rawhtml ul>li::before,
+        .vt-text ol li>ul>li::before,
+        .vt-text ul>li::before {
+            background-color: #8b1f41;
+        }
+        
+        .vt-rawhtml a {
+            text-decoration: underline;
+        }
+        
+        .vt-rawhtml li a {
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .vt-text blockquote,
+        .vt-rawhtml blockquote {
+            background: #f9f9f9;
+            border-left: 10px solid #ccc;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+            quotes: "\201C""\201D""\2018""\2019";
+        }
+        
+        .vt-text blockquote:before,
+        .vt-rawhtml blockquote:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.4em;
+        }
+        
+        .vt-text blockquote p,
+        .vt-rawhtml blockquote p {
+            display: inline;
+        }
+        
+        .blockquote-footer {
+            color: #000;
+        }
+        
+        .small-link {
+            border: 1px solid #c64600;
+            background-color: white;
+            padding: .2em .8em;
+            border-radius: 15px;
+        }
+        
+        sup a {
+            border: 1px solid #c64600;
+            background-color: white;
+            padding: .2em .8em;
+            border-radius: 15px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('.vt-num-col-1.vt-num-col-1 > ul > li > ul, .vt-num-col-1.vt-num-col-1 > ul > li > ul > li, .vt-num-col-1.vt-num-col-1 > ul > li > ul > li > ul, .vt-num-col-1.vt-num-col-1 > ul > li > ul > li > ul > li').attr('role', 'presentation');
+            $('.vt-list-columns.vt-num-col-2 > ul > li, .vt-list-columns.vt-num-col-2 > ul > li > ul, .vt-list-columns.vt-num-col-2 > ul > li > ul > li > ul > li').attr('role', 'presentation');
+            $('.vt-list-columns.vt-num-col-2 > ul > li > ul > li > ul').attr('role', 'article');
+            $('.vt-list-columns.vt-num-col-2 > ul > li > ul > li > ul .vt-list-title').each(function() {
+                var title = $(this).text().trim();
+                $(this).closest('[role="article"]').attr('aria-label', title);
+            });
+            $('.vt-list-columns.vt-num-col-2 > ul > li > ul > li > ul > li').attr('role', 'presentation');
+            $('#vt_body_col .vt-list .vt-num-col-2 .item .vt-list-item-img figure').unwrap().wrap("<div class='vt-list-item-img vt-landscape'></div>");
+            $('.vt-num-col-1.vt-num-col-1 > ul.image-format-hide > li > ul > li > ul > li').removeClass('col-sm-7 col-md-8').addClass('col-12 col-lg-12');
+        });
+    </script>
+</body>
+
+</html>

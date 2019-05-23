@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawer 14</title>
+    <style>
+        .hidden {
+            display:none;
+        }
+    </style>
+    <link rel="stylesheet" href="../sr-only.css">
+</head>
+<body>
+<div id="before">
+    <h1>Drawer 14</h1>
+    <h2>Parameters</h2>
+    <button>Before</button>
+    <ul>
+        <li>Nav wraps hamburger and menu</li>
+        <li>Menu labelled with aria-label</li>
+        <li>Nav labelled with aria-label</li>
+        <li>Hamburger contains aria-expanded</li>
+        <li>Nav button text does not change.</li>
+        <li>Hamburger does not contain aria-controls</li>
+        <li>No document role</li>
+        <li>No collapse on Escape</li>
+        <li>No use of aria-hidden.  Setting hide/reveal by adding and removing class that sets display: none.</li>
+        <li>Remove group role and aria-label from drawer menu</li>
+        <li>Add tabindex="-1" to drawer and set focus to it when hamburger button clicked.</li>
+    </ul>
+</div>
+<nav aria-label="Main Menu">
+    <button id="hamburger" onclick="toggleMenu()">Menu</button>
+    <div id="drawer" tabindex="-1" aria-label="Menu" class="hidden">
+        <ul>
+            <li><a href="1.html">page 1</a></li>
+            <li><a href="2.html">page 2</a></li>
+            <li><a href="3.html">page 3</a></li>
+            <li><a href="4.html">page 4</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="after">
+    <p>some text after</p>
+    <button>After</button>
+</div>
+<script>
+  var drawer = document.getElementById("drawer");
+  var expanded = false;
+
+  // https://www.w3schools.com/howto/howto_js_add_class.asp
+  var name = "hidden";
+
+  function toggleMenu() {
+    if (expanded) {
+      var arr = drawer.className.split(" ");
+      if (arr.indexOf(name) == -1) {
+        drawer.className += " " + name;
+      }
+
+    } else {
+      drawer.className = drawer.className.replace(/\bhidden\b/g, "");
+    }
+    expanded = !expanded;
+    drawer.focus();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+[role="dialog"] {
+    position: absolute;
+}
+
+[role="dialog"].hidden {
+    visibility: hidden;
+}

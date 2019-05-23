@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawer Demo</title>
+    <style>
+        .hidden {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div><a href="home.html">Site home page</a></div>
+    <div>slogan</div>
+</header>
+<nav aria-label="Main Menu">
+    <div><button id="hamburger" onclick="toggleMenu()" aria-expanded="false" aria-controls="drawer">Menu</button></div>
+
+    <div id="drawer" class="hidden" role="group" aria-label="Menu">
+        <ul>
+            <li><a href="1.html">page 1</a></li>
+            <li><a href="2.html">page 2</a></li>
+        </ul>
+    </div>
+</nav>
+<main>
+    <h1>Drawer Demo</h1>
+    <p>some text after</p>
+    <button>After</button>
+</main>
+<script>
+  var hamburger = document.getElementById("hamburger");
+  var drawer = document.getElementById("drawer");
+  var expanded = false;
+  var hiddenClass="hidden";
+
+  function toggleMenu() {
+    if (expanded) {
+      var arr = drawer.className.split(" ");
+      if (arr.indexOf(hiddenClass) == -1) {
+        drawer.className += " " + hiddenClass;
+      }
+    } else {
+      drawer.className = drawer.className.replace(/\bhidden\b/g, "");
+    }
+    expanded = !expanded;
+    hamburger.setAttribute("aria-expanded", expanded);
+  }
+</script>
+</body>
+</html>

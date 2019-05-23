@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawer</title>
+</head>
+<body>
+<h1>Drawer</h1>
+<h2>Drawer Options</h2>
+<ul>
+    <li>Whether hamburger is link or button.</li>
+    <li>Whether focus is trapped in drawer.</li>
+    <li>Position and number of close buttons:
+        <ul>
+            <li>One before menu links</li>
+            <li>One before menu links and one after menu links</li>
+            <li>One after menu links</li>
+        </ul>
+    </li>
+    <li>How much to hide outside of drawer:
+        <ul>
+            <li>Everything</li>
+            <li>Main Content</li>
+            <li>Everything below header</li>
+        </ul>
+    </li>
+    <li>Where to set focus on clicking hamburger:
+        <ul>
+            <li>Leave on hamburger</li>
+            <li>Set focus to close button in menu group</li>
+            <li>Set focus to entire menu</li>
+            <li>Set focus to first link in menu</li>
+            <li></li>
+        </ul>
+    </li>
+    <li>Whether to collapse menu when focus leaves menu.</li>
+    <li>Whether pressing Escape collapses menu.</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<h2>Considerations</h2>
+<ul>
+    <li>Making hamburger a link (pointing to the heading of the menu) might conform better to progressive enhancement.  However, with JS enabled, you'd want the Menu to be a button, since it is really performing an action.  Since you aren't supposed to change an element's role, you'd want to destroy the link and create the button.  This is starting to get complicated.</li>
+    <li>NVDA only announces labels on ARIA landmarks, not announce groups or articles.</li>
+    <li>Some screen readers (NVDA?) may not announce changes to the aria-expanded property (though I think they will announce its state when user moves to button.  Therefore, the text of the button should probably change, but that may present confusing cues, if read together with the aria-expanded state change on SRs that support that support announcing that property change.  Button text should be chosen carefully for this reason.  NOTE: Is it even a good thing for this change in state to be announced.  Since users are clicking the button, they should expect that it will expand the menu, and may not want to be bothered by this extra noise.</li>
+    <li>Consider whether clicking on Search button causes the same behavior.</li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

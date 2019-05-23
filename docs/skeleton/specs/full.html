@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var MediaQuerySwitch = function(condition, mobile, desktop, switched) {
+
+            this.mql = window.matchMedia(condition);
+
+            this.mobile = mobile;
+            this.desktop = desktop;
+            this.switched = switched;
+        };
+
+        MediaQuerySwitch.prototype.init = function() {
+            this.mql.onchange = this.switchContent;
+            this.mql.addListener(this.switchContent.bind(this));
+            if (this.mql.matches) {
+                this.mobile.appendChild(this.switched);
+            } else {
+                this.desktop.appendChild(this.switched);
+            }
+            this.switched.className = this.switched.className.replace(/\bhidden\b/g, "");
+        }
+
+        MediaQuerySwitch.prototype.switchContent = function(event) {
+            if (event.matches) {
+                this.mobile.appendChild(this.switched);
+            } else {
+                this.desktop.appendChild(this.switched);
+            }
+        };
+
+        var mqSwitch = new MediaQuerySwitch(
+            '(max-width: 700px)',
+            document.getElementById('menuDrawer'),
+            document.querySelector('[aria-label="Actions"]'),
+            document.querySelector('[aria-label="Audiences"]'));
+        mqSwitch.init();
+    </script>
+</head>
+
+<body>
+    <div class="vt-skip-nav">
+        <a href="#vt-one-content-area">skip to main content</a>
+    </div>
+    <!--
+What should this be called?  It can't really be Actions, since "Resources for" 
+isn't an action.  We can't use positional information like "top navigation", 
+since that assumes vision.  We also shouldn't make both Actions and Audiences 
+separate navs, since that creates too many landmarks.  Also, if they were 
+<navs>, putting them in the Main Menu <nav> would mean you had nested <nav>s, 
+which is a no-no.
+-->
+    <nav aria-label="Actions and Audiences">
+        <!--
+    This needs to be labelled separately, since it will be moved under Main Menu
+    at small breakpoints.  I think it is better to move these than have 
+    duplicate copies.  If, for some reason you are opposed to this, make sure 
+    you use unique IDREFs.
+    You can use the the 
+    [MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList) 
+    object to handle moving content based on media queries.
+    -->
+        <ul aria-label="Actions">
+            <li><a href="#apply">Apply</a></li>
+            <!-- ... and so on-->
+        </ul>
+        <!--
+    This needs to be a separately-labelled group, since it will be moved under 
+    Main Menu at small breakpoints.
+    -->
+        <div role="group" aria-label="Audiences">
+            <!--
+        aria-haspopup signals that this is actually going to be a real menu, as 
+        opposed to a disclosure or the like.
+        aria-controls points to IDREF of the menu
+        -->
+            <button id="resourcesBtn" aria-haspopup="true" aria-controls="resources">Resources for:</button>
+            <!--
+        The fact that there is no block-level boundary between the triggering 
+        button and what it causes to be displayed is not an issue for VO on 
+        MacOS, because it is a menu button and, as such, we automatically set 
+        focus to the first menu item and actively manage focus in the menu, 
+        overriding the standard virtual cursor navigation.
+        The menu is labelled by the button that causes it to appear.
+        -->
+            <ul id="resources" role="menu" aria-labelledby="resourcesBtn">
+                <!--
+            role="presentation" is important, because the parent <ul> has been given the
+            role, "menu", which would mean that you'd have an <li> without a <ul>
+            or <ol> as a parent
+            -->
+                <li role="presentation">
+                    <!--
+                We must change the link to have the role, menuitem, because 
+                we've changed the role of the <ul> to menu.
+                -->
+                    <a role="menuitem" href="#futureStudents">
+                    Future Students
+                </a>
+                </li>
+                <!-- ... and so on-->
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <header role="banner">
+            <a href="https://vt.edu">
+                <!--
+            Best to have all visible text in the image in the alt text
+            -->
+                <img alt="VT Virginia Tech" src="logo-maroon.svg">
+            </a>
+        </header>
+        <!--
+    Avoid labelling as "nav" or "menu", since the AT should announce that.
+    -->
+        <nav aria-label="Site" aria-details="">
+            <!--
+        The link-wrapper div is important because it provides a block-level 
+        separation between the button trigger and its revealed content. If you 
+        don't do this, VO on Mac can skip the revealed content if accessed using
+        the virtual cursor.
+        -->
+            <div class="link-wrapper">
+                <!--
+            Whenever a drawer is expanded, listen for focus events that occur 
+            outside of the element that contains the currently open drawer, 
+            except in the Disabled Content section (that requires an explicit 
+            click event). When a focus event occurs, close the drawer, updating 
+            its button trigger aria-expanded state, but do not move focus to 
+            button trigger.
+            Switch aria-expanded between true and false when expanded or 
+            collapsed.
+            aria-controls points to the IDREF of the revealed content, which 
+            needs to be separated from the button trigger by a block-level 
+            element, because, otherwise, VO on Mac can skip the revealed 
+            content if accessed using the virtual cursor.
+            -->
+                <button id="menuBtn" aria-expanded="true" aria-controls="menuDrawer" aria-label="Menu">
+                    <!--
+                Don't change button text.  Just add or remove the none class to 
+                the <spans> wrapping the <svg>s, which sets display:none, to 
+                toggle between icon to be shown when open vs. when closed.
+                -->
+                    Menu
+                    <span class="">
+                        <!--
+                    aria-hidden is probably not needed on the <svg>, since you 
+                    are using aria-label to provide an accessible name for the 
+                    button, but, just to be on the safe side, until I confirm 
+                    that, I'd keep it.
+                    If you don't set focusable to false here, JAWS/IE will add 
+                    an extra focus target, even though you've set 
+                    aria-hidden="true"
+                    -->
+                        <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        role="img" class="hamburger"></svg>
+                    </span>
+                    <span class="none">
+                        <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        role="img" class="times"></svg>
+                    </span>
+                </button>
+            </div>
+            <!--
+        Setting the role to group allows you to give something a name that will 
+        be voiced by most screen readers, but that would not be listed as a 
+        landmark, such as would be the case if you made it a <section>.
+        Using "menu" in the label for this may be a little awkward, since it is 
+        not, technically, a menu. However, since the button that causes it to 
+        appear is labelled "Menu", I think it is okay.
+        The IDREF for the group is referenced by aria-controls on the menu 
+        button.
+        -->
+            <div role="group" aria-label="Main Menu Drawer" id="menuDrawer">
+                <!--
+            Since I found out in last meeting that these are to be links, this 
+            requires a slight adjustment to menu structure.
+            -->
+                <ol role="group" aria-label="Parent Organization and Current Site">
+                    <li><a href="college.html">College Name</a></li>
+                    <!--
+                If on the site home page, this should have aria-current set to 
+                "page." Though leaving off the href attribute is allowed in 
+                HTML5, it should still be included here because, otherwise, the 
+                link cannot reliably receive focus in all browsers.
+                http://design-patterns.tink.uk/aria-current/
+                -->
+                    <li><a href="department.html" id="siteName">Department Name</a></li>
+                </ol>
+                <ul aria-label="Pages in Site">
+                    <li>
+                        <!--
+                    The link-wrapper div is important because it provides a 
+                    block-level separation between the button trigger and its 
+                    revealed content. If you don't do this, VO on Mac can skip 
+                    the revealed content if accessed using the virtual cursor.
+                    -->
+                        <div class="link-wrapper">
+                            <a href="about.html" id="about">About</a>
+                            <!--
+                        Could probably use aria-labelledby referencing the IDREF
+                        of the About link, rather than aria-label to be a little
+                        more terse, but until I confirm, it is probably safer 
+                        from an AT support perspective to use aria-label.
+                        Switch aria-expanded between true and false when 
+                        expanded or collapsed.
+                        aria-controls points to the IDREF of the revealed 
+                        content, which needs to be separated from the button 
+                        trigger by a block-level element, because, otherwise, 
+                        VO on Mac can skip the revealed content if accessed 
+                        using the virtual cursor.
+                        -->
+                            <button id="aboutmenubutton" aria-label="About Submenu" aria-expanded="false" aria-controls="aboutSub">
+                            <span class="">
+                                <svg
+                                        aria-hidden="true"
+                                        focusable="false"
+                                        role="img" class="times"></svg>
+                            </span>
+                          </button>
+                        </div>
+                        <ul id="aboutSub" aria-labelledby="aboutmenubutton">
+                            <li><a href="approach.html">Our Approach</a></li>
+                            <!-- ... and so on-->
+                        </ul>
+                    </li>
+                    <!-- ... and so on-->
+                </ul>
+                <!-- 
+            Move the elements labelled with [aria-label="Actions"] and  
+            [aria-label="Actions"] into the Main Menu Drawer (#menuDrawer) when 
+            at mobile breakpoint.  Do not duplicate Actions and Audiences, but instead move using 
+            MediaQueryList object.  Also, set "Audiences and Actions" <nav> to 
+            display:none at that point. 
+            -->
+            </div>
+        </nav>
+        <!--
+    No explicit label needed, since there is only one search landmark.
+    -->
+        <div role="search">
+            <!--
+        The link-wrapper div is important because it provides a block-level 
+        separation between the button trigger and its revealed content. If you 
+        don't do this, VO on Mac can skip the revealed content if accessed 
+        using the virtual cursor.
+        -->
+            <div class="link-wrapper">
+                <!--
+            Switch aria-expanded between true and false when expanded or 
+            collapsed.
+            aria-controls points to the IDREF of the revealed content, which 
+            needs to be separated from the button trigger by a block-level 
+            element, because, otherwise, VO on Mac can skip the revealed content
+            if accessed using the virtual cursor.
+            
+            SHELVED UNTIL PROBLEMS REPORTED: Whenever a drawer is expanded, 
+            listen for focus events that occur outside of the element that 
+            contains the currently open drawer, except in the Disabled Content 
+            section (that requires an explicit click event). When a focus event 
+            occurs, close the drawer, updating its button trigger aria-expanded 
+            state, but do not move focus to button trigger.
+            
+            -->
+                <button id="searchBtn" aria-expanded="true" aria-controls="searchDrawer" aria-label="Search">
+                <!--
+                Don't change button text.  Just add or remove the none class to 
+                the <spans> wrapping the <svg>s, which sets display:none, to 
+                toggle between icon to be shown when open vs. when closed.
+                -->
+                Search
+                <span class="">
+                    <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            role="img" class="spyglass"></svg>
+                </span>
+                <span class="none">
+                    <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            role="img" class="times"></svg>
+                </span>
+            </button>
+            </div>
+            <!--
+        The form label here includes the word "Drawer", thus using the same 
+        terminology here as with the main "hamburger" menu, since it is the 
+        same sort of thing, and this should help make it clearer how they 
+        behave.
+        -->
+            <form aria-label="Search Drawer" id="searchDrawer">
+                <!--
+            The <div> here may not be necessary, but the form controls should be
+            arranged horizontally, one after another.
+            -->
+                <div>
+                    <!--
+                The "for" attribute here points to IDREF of the Search field.
+                -->
+                    <label for="vt_search_box">Search</label>
+                    <input id="vt_search_box" type="text" placeholder="Search vt.edu">
+
+                    <!--
+                The "for" attribute here points to IDREF of the Search Scope 
+                <select> box.
+                -->
+                    <label for="searchType">Search Scope</label>
+                    <select id="searchType">
+                      <option value="search-site" selected="selected">Search this site</option>
+                      <option value="search-all">Search all VT</option>
+                  </select>
+                    <!--
+                This should be an actual submit button, ideally with the visible
+                text "Submit", that causes the form to be submitted, rather than
+                a generic button that uses javascript to submit the form.
+                -->
+                    <input type="submit" value="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--
+By default, this should have dispaly:none, but make this section visible when 
+drawers are expanded.
+-->
+    <section aria-label="Disabled Content">
+        <!--
+    This button is the semi-opaque mask and should cover the whole area of the 
+    "Page Context <nav>, <main>, and <footer> tags. You could also use a div 
+    with role="button", but you'd need to make sure that you handled a SPACE and
+    ENTER keyup event as well.  Clicking the button closes whatever drawer is 
+    open, sets focus to the button that causes the drawer to expand, and removes
+    display:none from the stuff that was masked. Make sure to update the 
+    aria-expanded state on that triggering button!
+    -->
+        <button aria-controls="menuDrawer searchDrawer">Hide Menu to Access Content</button>
+    </section>
+    <!--
+To avoid too many landmark regions, we should probably have this contain both 
+the breadcrumb and the "Explore this section" widget.
+Set aria-hidden="true" when drawers are expanded.
+-->
+    <nav aria-label="Page Context">
+        <!--
+    ARIA Authoring Practices pattern recommends <ol>.
+    https://www.w3.org/TR/wai-aria-practices-1.1/examples/breadcrumb/index.html
+    -->
+        <ol aria-label="Breadcrumb">
+            <li><a href="college.html">College</a></li>
+            <li><a href="department.html">Dept</a></li>
+            <!-- ... and so on-->
+            <!--
+          Although, as of February 2018, Android's Talkback screen reader doesn't 
+          support aria-current, in this instance, because it is relatively clear 
+          from context which page is the current one, it is best to actually use 
+          the attribute, rather than use hidden text.  
+          Though leaving off the href attribute is allowed in HTML5, it should 
+          still be included here because, otherwise, the link cannot reliably 
+          receive focus in all browsers.
+          http://design-patterns.tink.uk/aria-current/
+          -->
+            <li><a href="current.html" aria-current="page">Current Page</a></li>
+        </ol>
+        <!--
+    This should function like a disclosure widget, pushing content down, rather 
+    than serving as an overlay. There should be no active focus management, 
+    since this is not technically a menu, but a disclosure.
+    https://www.w3.org/TR/wai-aria-practices-1.1/#disclosure
+    -->
+        <div role="group" aria-label="Current section of site">
+            <div class="link-wrapper">
+                <button id="explorebutton" aria-controls="exploremenu" aria-label="Explore this section" aria-expanded="false">
+                    Explore this section
+                    <span class="">
+                        <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            role="img" class="times"></svg>
+                    </span>
+                </button>
+            </div>
+            <ul id="exploremenu" aria-labelledby="explorebutton">
+                <li><a href="sibling1.html">Sibling of current page</a></li>
+                <!--
+              Since, as of February 2018, Android's Talkback screen reader doesn't 
+              support aria-current, in this instance, because context is so important, 
+              it is better to communicate which page is the current one by using hidden 
+              text.  In the other instances, where this is not as important, it is 
+              better to communicate this semantically using aria-current.
+              The href attribute should be included, since, otherwise, it cannot 
+              receive focus in all browsers.
+              http://design-patterns.tink.uk/aria-current/
+              -->
+                <li><a href="current.html"><span class="sr-only">Current page:</span> Our History </a>
+                    <ul>
+                        <li><a href="founding.html">Founding Biological Science</a></li>
+                        <li><a href="facts.html">Historical Facts</a></li>
+                        <li><a href="building.html">Our Building’s History</a></li>
+                    </ul>
+                    <li>
+                    </li>
+                    <li><a href="sibling2.html">Another Sibling</a></li>
+                    <!-- ... and so on-->
+            </ul>
+        </div>
+    </nav>
+    <!--
+Set aria-hidden="true" when drawers are expanded.
+-->
+    <main>
+        <h1>Page Title</h1>
+    </main>
+    <!--
+Set aria-hidden="true" when drawers are expanded.
+-->
+    <footer>
+
+
+    </footer>
+
+</body>
+
+</html>

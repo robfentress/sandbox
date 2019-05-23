@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Brand Palette Color Contrast Verification</title>
+</head>
+<body>
+<h2>Web Accessibility</h2>
+<p>
+    The university has committed to meeting the requirements set out in
+    <a href="https://www.google.com/url?q=https://www.w3.org/WAI/standards-guidelines/wcag/&sa=D&ust=1538059923601000">Web
+        Content Accessibility Guidelines 2.0</a> (WCAG) at
+    <a href="https://www.google.com/url?q=https://www.w3.org/TR/WCAG20/%23conformance&sa=D&ust=1538059923601000">conformance
+        level AA</a>. Following these guidelines helps ensure that all users, including those with disabilities, can
+    access resources on the web.
+</p>
+<p>For color, this means that a certain ratio of contrast between the foreground and background colors must be met in
+    order for most people to read text comfortably. These required ratios are different depending on the size and weight
+    of the type. Larger or bolder text needs to have less contrast in order for most users to be able to read it.
+</p>
+<p>For the AA conformance level, which the university has committed to meeting, text must have a contrast ratio of 4.5:1
+    or greater unless it is considered
+    <a href="https://www.google.com/url?q=https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html%23larger-scaledef&sa=D&ust=1538059923602000">large-scale
+        text</a> in which case it must have a contrast ratio of at least 3:1.
+</p>
+<p>Large-scale text is defined as being:</p>
+<ul>
+    <li>18pt or greater if the text is not bold or</li>
+    <li>14pt or greater if the text is bold</li>
+</ul>
+<p>Since most web developers do not use points for font size, we have provided the tables below that show these values
+    in other units, such as pixels, ems, and percents.</p>
+<h3>Normal Text: Required Contrast Ratio 4.5:1 or greater</h3>
+<p>What is Normal Text at browser-default font size of 16px?</p>
+<table class="vt-c-table-noPostProcess" style="min-width: 500px">
+    <caption style="caption-side:top">Normal Text</caption>
+    <thead>
+    <tr>
+        <td>&nbsp;</td>
+        <th scope="col" aria-label="points">pt</th>
+        <th scope="col" aria-label="pixels">px</th>
+        <th scope="col" aria-label="ems">em</th>
+        <th scope="col" aria-label="percent">%</th>
+    </tr>
+    </thead>
+    <tbody> `
+    <tr>
+        <th scope="row">Not-bold</th>
+        <td>&lt; 18</td>
+        <td>&lt; 24</td>
+        <td>&lt; 1.5</td>
+        <td>&lt; 120</td>
+    </tr>
+    <tr>
+        <th scope="row">Bold</th>
+        <td>&lt; 14</td>
+        <td>&lt; 18.7</td>
+        <td>&lt; 1.2</td>
+        <td>&lt; 120</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Large-scale Text: Required Contrast Ratio 3:1 or greater</h3>
+<p>What is Large-scale Text at browser-default font size of 16px?</p>
+<table class="vt-c-table-noPostProcess" style="min-width: 500px">
+    <caption>Large-scale Text</caption>
+    <thead>
+    <tr>
+        <td>&nbsp;</td>
+        <th scope="col" aria-label="points">pt</th>
+        <th scope="col" aria-label="pixels">px</th>
+        <th scope="col" aria-label="ems">em</th>
+        <th scope="col" aria-label="percent">%</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Not-bold</th>
+        <td>&gt;= 18</td>
+        <td>&gt;= 24</td>
+        <td>&gt;= 1.5</td>
+        <td>&gt;= 120</td>
+    </tr>
+    <tr>
+        <th scope="row">Bold</th>
+        <td>&gt;= 14</td>
+        <td>&gt;= 18.7</td>
+        <td>&gt;= 1.2</td>
+        <td>&gt;= 150</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+  $( document ).ready(function() {
+    $('#vtColorForm').submit(function(event) {
+      event.preventDefault();
+      var colorArray = [
+        [1, 1.29, 1.5, 4.44, 10.42, 5.58, 2.53, 1.25, 4.12, 1.84, 11.14, 2.96, 4.67, 9.19, 21], //yardline white
+        [1.29, 1, 1.16, 3.44, 8.06, 4.31, 1.96, 1.04, 3.19, 1.42, 8.62, 2.29, 3.62, 7.11, 16.24], //skipper smoke
+        [1.5, 1.16, 1, 2.95, 6.93, 3.71, 1.68, 1.2, 2.74, 1.22, 7.41, 1.97, 3.11, 6.11, 13.97], //land-grant grey
+        [4.44, 3.44, 2.95, 1, 2.35, 1.26, 1.75, 3.56, 1.08, 2.42, 2.51, 1.5, 1.05, 2.07, 4.73], //hokie stone
+        [10.42, 8.06, 6.93, 2.35, 1, 1.87, 4.12, 8.35, 2.53, 5.67, 1.07, 3.52, 2.23, 1.13, 2.01], //pylon purple
+        [5.58, 4.31, 3.71, 1.26, 1.87, 1, 2.2, 4.47, 1.35, 3.03, 2, 1.88, 1.19, 1.65, 3.77], //boundless pink
+        [2.53, 1.96, 1.68, 1.75, 4.12, 2.2, 1, 2.03, 1.63, 1.38, 4.4, 1.17, 1.85, 3.63, 8.29], //virginia sunset
+        [1.25, 1.04, 1.2, 3.56, 8.35, 4.47, 2.03, 1, 3.3, 1.47, 8.92, 2.37, 3.74, 7.36, 16.82], //triumphant yellow
+        [4.12, 3.19, 2.74, 1.08, 2.53, 1.35, 1.63, 3.3, 1, 2.24, 2.71, 1.39, 1.13, 2.23, 5.1], //sustainable teal
+        [1.84, 1.42, 1.22, 2.42, 5.67, 3.03, 1.38, 1.47, 2.24, 1, 6.06, 1.61, 2.54, 5, 11.42], //vibrant turquoise
+        [11.14, 8.62, 7.41, 2.51, 1.07, 2, 4.4, 8.92, 2.71, 6.06, 1, 3.76, 2.38, 1.21, 1.88], //cadet blue
+        [2.96, 2.29, 1.97, 1.5, 3.52, 1.88, 1.17, 2.37, 1.39, 1.61, 3.76, 1, 1.58, 3.1, 7.09], //burnt orange
+        [4.67, 3.62, 3.11, 1.05, 2.23, 1.19, 1.85, 3.74, 1.13, 2.54, 2.38, 1.58, 1, 1.97, 4.49], //web burnt orange
+        [9.19, 7.11, 6.11, 2.07, 1.13, 1.65, 3.63, 7.36, 2.23, 5, 1.21, 3.1, 1.97, 1, 2.29], //chicago maroon
+        [21, 16.24, 13.97, 4.73, 2.01, 3.77, 8.29, 16.82, 5.1, 11.42, 1.88, 7.09, 4.49, 2.29, 1] //black
+      ];
+      var colorRatio = 0;
+
+      //get color data point from form values
+      colorRatio = colorArray[event.target.foreground.value][event.target.background.value];
+
+      //check ratio based on font size and pass/fail message
+      if (event.target.fontSize.value == "normal") {
+        if (colorRatio >= 4.5) {
+          alert("The color choices are accessible.");
+        } else {
+          alert("The color choices are NOT accessible, please choose another color combination or make your text bigger or bold.");
+        }
+      } else {
+        if (colorRatio >= 3) {
+          alert("The color choices are accessible.");
+        } else {
+          alert("The color choices are NOT accessible, please choose another color combination or make your text bigger or bold.");
+        }
+      }
+    });
+  });
+  /*function colorCheck(form) {
+    var colorRatio = 0;
+
+    //get color data point from form values
+    colorRatio = colorArray[form.foreground.value][form.background.value];
+
+    //check ratio based on font size and pass/fail message
+    if (form.fontSize.value == "normal") {
+      if (colorRatio >= 4.5) {
+        alert("The color choices are accessible.");
+      } else {
+        alert("The color choices are NOT accessible, please choose another color combination or make your text bigger or bold.");
+      }
+    } else {
+      if (colorRatio >= 3) {
+        alert("The color choices are accessible.");
+      } else {
+        alert("The color choices are NOT accessible, please choose another color combination or make your text bigger or bold.");
+      }
+    }
+    return false;
+  }*/
+
+</script>
+<h3>Brand Palette Color Contrast Verification</h3>
+<p>We have developed a tool to help designers and content producers choose color combinations from the Brand Palette
+    that are within the
+    <a href="https://www.google.com/url?q=https://www.w3.org/WAI/WCAG20/quickref/&amp;sa=D&amp;ust=1538059923609000">WCAG
+        2.0 Level AA</a> accessibility standard that the University has recommended for all sites in order to meet
+    requirements under the Americans with Disabilities Act (ADA) requirements. Simply choose your foreground and
+    background colors and whether your text is Normal or Large-scale. Then click the Check my choices button to learn
+    whether you have met these requirements.</p>
+<form id="vtColorForm" action="#" class="vt-color-form">
+    <div class="form-group">
+        <label for="foreground">Foreground / text color:</label>
+        <select class="form-control" id="foreground" name="foreground" class="vt-color-foreground">
+            <option value="0" selected="">Yardline White</option>
+            <option value="1">Skipper Smoke</option>
+            <option value="2">Land-Grant Grey</option>
+            <option value="3">Hokie Stone</option>
+            <option value="4">Pylon Purple</option>
+            <option value="5">Boundless Pink</option>
+            <option value="6">Virginia Sunset</option>
+            <option value="7">Triumphant Yellow</option>
+            <option value="8">Sustainable Teal</option>
+            <option value="9">Vibrant Turquoise</option>
+            <option value="10">Cadet Blue</option>
+            <option value="11">Burnt Orange</option>
+            <option value="12">Burnt Orange Web</option>
+            <option value="13">Chicago Maroon</option>
+            <option value="14">Black</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="background">Background color:</label>
+        <select class="form-control" id="background" name="background" class="vt-color-foreground">
+            <option value="0" selected="">Yardline White</option>
+            <option value="1">Skipper Smoke</option>
+            <option value="2">Land-Grant Grey</option>
+            <option value="3">Hokie Stone</option>
+            <option value="4">Pylon Purple</option>
+            <option value="5">Boundless Pink</option>
+            <option value="6">Virginia Sunset</option>
+            <option value="7">Triumphant Yellow</option>
+            <option value="8">Sustainable Teal</option>
+            <option value="9">Vibrant Turquoise</option>
+            <option value="10">Cadet Blue</option>
+            <option value="11">Burnt Orange</option>
+            <option value="12">Burnt Orange Web</option>
+            <option value="13">Chicago Maroon</option>
+            <option value="14">Black</option>
+        </select>
+    </div>
+    <fieldset>
+        <legend>Text type (unit conversions above):</legend>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="normalFontSize" name="fontSize" value="normal" checked="">
+            <label class="form-check-label" for="normalFontSize">
+                Normal text: &lt; 18pt if not bold or &lt; 14pt if bold
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="largeFontSize" name="fontSize" value="large">
+            <label class="form-check-label" for="largeFontSize">
+                Large-scale text: &gt;= 18pt if not bold or &gt;= 14pt if bold
+            </label>
+        </div>
+
+    </fieldset>
+
+    <button class="btn btn-primary vt-color-check" type="submit">Check my choices</button>
+</form>
+<p>You can learn more about how to check the contrast of colors outside of the university&rsquo;s primary and secondary
+    palette by looking the at the Knowledge Base article on
+    <a href="https://www.google.com/url?q=https://vt4help.service-now.com/sp?id%3Dkb_article%26sys_id%3Dbe169252dbdc2b041c1e86171b96195a&amp;sa=D&amp;ust=1538059923610000">Ensuring
+        Sufficient Contrast</a>.
+</p>
+</body>
+</html>

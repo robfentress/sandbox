@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .sronly {
+            /*border: 0;
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute !important;
+            width: 1px;
+            word-wrap: normal !important;*/
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<!--<a aria-labelledby="tooltip" href="#" onclick="alert('success!'); return false;" role="button">test</a>
+<button aria-labelledby="tooltip" onclick="alert('success!');">test</button>
+<div role="tooltip" id="tooltip" class="sr-only">Expand / collapse breadcrumb path</div>-->
+<button class="notifications" aria-labelledby="notifications-label" onclick="alert('success!'); return false;">
+    <svg><use xlink:href="#notifications-icon"></use></svg>
+</button>
+<div role="tooltip" id="notifications-label">Notifications</div>
+<form action="/action_page.php" method="get">
+    <select>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select>
+</form>
+</body>
+</html>

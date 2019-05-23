@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawer 1</title>
+    <style>
+        #drawer[aria-hidden="true"] {
+            display: none;
+        }
+
+        #drawer[aria-hidden="false"] {
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="../sr-only.css">
+</head>
+<body>
+<div id="before">
+    <h1>Drawer 1</h1>
+    <h2>Parameters</h2>
+    <button>Before</button>
+    <ul>
+        <li>Nav wraps hamburger and menu</li>
+        <li>Nav labelled with aria-label</li>
+        <li>Hamburger contains aria-expanded</li>
+        <li>Hamburger contains aria-controls</li>
+        <li>No document role</li>
+        <li>Menu wrapped in role=group</li>
+        <li>Menu labelled as "Menu" with aria-label</li>
+        <li>No collapse on Escape</li>
+        <li>aria-hidden used to set display to none</li>
+    </ul>
+</div>
+<nav aria-label="Main Menu">
+    <button id="hamburger" aria-expanded="false" aria-controls="drawer" onclick="toggleMenu()"><span class="sr-only" id="state">Expand</span>
+        Menu
+    </button>
+    <div role="group" id="drawer" aria-label="Menu" aria-hidden="true">
+        <ul>
+            <li><a href="1.html">page 1</a></li>
+            <li><a href="2.html">page 2</a></li>
+            <li><a href="3.html">page 3</a></li>
+            <li><a href="4.html">page 4</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="after">
+    <p>some text after</p>
+    <button>After</button>
+</div>
+<script>
+  var hamburger = document.getElementById("hamburger");
+  var state = document.getElementById("state");
+  var drawer = document.getElementById("drawer");
+  function toggleMenu() {
+    var expanded = hamburger.getAttribute("aria-expanded");
+    if (expanded == "true") {
+      drawer.setAttribute("aria-hidden", expanded);
+      expanded = "false";
+      state.innerHTML = "Expand";
+    } else {
+      drawer.setAttribute("aria-hidden", expanded);
+      expanded = "true";
+      state.innerHTML = "Collapse";
+    }
+    hamburger.setAttribute("aria-expanded", expanded);
+  }
+  /*hamburger.onclick = function () {
+    if (hidden) {
+      hidden = false;
+      hamburger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+      state.innerHTML = "Collapse";
+    } else {
+      hidden = true;
+      hamburger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'true');
+      state.innerHTML = "Expand";
+    }
+  }*/
+</script>
+</body>
+</html>

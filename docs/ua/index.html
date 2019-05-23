@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #vt_access_dialog {
+
+        }
+    </style>
+</head>
+<body>
+<div class="row vt-one-preHeader"><div class="vt-universal-access">
+    <button onclick="accessToggle()" class="vt-access-toggle" aria-labelledby="vt_universal_access_label">
+        <img src="https://vt.edu/local_assets/www.assets.cms.vt.edu/images/accessibility_icon_white.svg" class="vt-access-toggle-icon vt-transparent-bg" focusable="false" aria-hidden="true">
+        <span class="sr-only">Universal Access Toggle</span>
+    </button>
+    <div role="tooltip" id="vt_universal_access_label" class="vt-universal-access-label">Universal Access</div>
+        <div role="dialog" id="vt_access_dialog" aria-labelledby="access_dialog_label" aria-describedby="access_dialog_label" aria-modal="true" class="vt-access-dialog-wrapper" aria-hidden="true">
+            <div class="vt-access-dialog">
+                <button onclick="accessToggle()" class="vt-access-dialog-close" tabindex="-1">
+                    <svg class="svg-inline--fa fa-times fa-w-12" focusable="false" aria-hidden="true" data-prefix="far" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M231.6 256l130.1-130.1c4.7-4.7 4.7-12.3 0-17l-22.6-22.6c-4.7-4.7-12.3-4.7-17 0L192 216.4 61.9 86.3c-4.7-4.7-12.3-4.7-17 0l-22.6 22.6c-4.7 4.7-4.7 12.3 0 17L152.4 256 22.3 386.1c-4.7 4.7-4.7 12.3 0 17l22.6 22.6c4.7 4.7 12.3 4.7 17 0L192 295.6l130.1 130.1c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17L231.6 256z"></path></svg><!-- <span class="far fa-times" focusable="false" aria-hidden="true"></span> -->
+                    <span class="sr-only">Close Universal Access dialog</span>
+                </button>
+                <span id="vt_access_dialog_label" class="vt-access-dialog-label">Universal Access Options</span>
+                <ul class="vt-access-options">
+                    <li class="vt-access-item"><a href="#vt_main" onclick="accessToggle()" class="vt-access-item-link" tabindex="-1"><img src="/local_assets/www.assets.cms.vt.edu/images/vt-accessibility_skip-content.svg" class="vt-access-item-linkImage vt-transparent-bg" focusable="false" aria-hidden="true"><span class="vt-access-item-linkText">Skip to main content</span></a></li>
+                    <li class="vt-access-item"><a href="mailto:assist@vt.edu" onclick="accessToggle()" class="vt-access-item-link" tabindex="-1"><img src="/local_assets/www.assets.cms.vt.edu/images/vt-accessibility_report-barrier.svg" class="vt-access-item-linkImage vt-transparent-bg" focusable="false" aria-hidden="true"><span class="vt-access-item-linkText">Report a barrier</span></a></li>
+                </ul>
+            </div> <!-- end vt-access-dialog -->
+    </div> <!-- end vt_access_dialog -->
+</div>
+    <!-- end vt-universal-access -->
+</div>
+
+
+<nav class="vt-actions-header" aria-label="Actions and Audiences">
+    <ul id="vt_common" role="group" aria-label="Actions">
+        <li class="vt-common-item"><a class="vt-common-link" href="https://vt.edu/apply.html">Apply</a></li>
+        <li class="vt-common-item"><a class="vt-common-link" href="https://vt.edu/visit.html">Visit</a></li>
+        <li class="vt-common-item"><a class="vt-common-link" href="https://webapps.es.vt.edu/givingto/gift">Give</a></li>
+        <li class="vt-common-item"><a class="vt-common-link" href="http://www.hokiegear.com/?_s=bm-storefront&amp;utm_source=vt_edu&amp;utm_medium=referral">Shop</a></li>
+    </ul>
+    <div class="vt-resources-for-wrapper" role="group" aria-label="Audiences">
+        <button id="vt_header_resources_toggle" class="vt-resources-toggle" aria-haspopup="true" aria-controls="vt_header_resources_options" aria-expanded="false">Resources for <svg class="svg-inline--fa fa-chevron-down fa-w-14" aria-hidden="true" focusable="false" role="img" data-prefix="far" data-icon="chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path></svg><!-- <span class="far fa-chevron-down" aria-hidden="true" focusable="false" role="img"></span> --></button>
+        <ul id="vt_header_resources_options" role="menu" class="vt-resources-options closed" aria-labelledby="header_resources_toggle" aria-hidden="true">
+            <li role="none presentation" class="vt-resources-item"><a role="menuitem" tabindex="-1" class="vt-resources-item-link" href="https://vt.edu/admissions.html">Future Students</a></li>
+            <li role="none presentation" class="vt-resources-item"><a role="menuitem" tabindex="-1" class="vt-resources-item-link" href="https://vt.edu/resources/current-students.html">Current Students</a></li>
+            <li role="none presentation" class="vt-resources-item"><a role="menuitem" tabindex="-1" class="vt-resources-item-link" href="https://vt.edu/resources/parents-and-families.html">Parents and Families</a></li>
+            <li role="none presentation" class="vt-resources-item"><a role="menuitem" tabindex="-1" class="vt-resources-item-link" href="https://vt.edu/resources/faculty-and-staff.html">Faculty and Staff</a></li>
+            <li role="none presentation" class="vt-resources-item"><a role="menuitem" tabindex="-1" class="vt-resources-item-link" href="https://alumni.vt.edu">Alumni</a></li>
+            <li role="none presentation" class="vt-resources-item"><a role="menuitem" tabindex="-1" class="vt-resources-item-link" href="https://vt.edu/resources/industry-and-partners.html">Industry and Partners</a></li>
+        </ul>
+    </div>
+</nav> <!-- end vt-actions-header -->
+
+<button aria-expanded="false">Universal Access</button>
+<section aria-labelledby="uaHeading" class="open" id="vt_access_dialog">
+    <h2 id="uaHeading">Universal Access Options</h2>
+    <button id="close" class="vt-access-dialog-close">close</button>
+    <ul>
+        <li><a>Skip to Main Content</a></li>
+        <li><a href="barrier.html">Report a barrier</a></li>
+    </ul>
+</section>
+<main id="main">
+    <a href="#after">after</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* CSS for editor mode */
+
+.vt-search-wrapper {
+  display: none;
+}
+
+.vt-parallax .carousel .carousel-inner .item,
+.vt-parallax .carousel .carousel-inner .item .carousel-caption,
+.vt-parallax .carousel .carousel-inner .item .item-image,
+.vt-image.vt-parallax,
+.vt-image.vt-parallax .image-holder {
+    height: 100%;
+    min-height: 500px;
+    top: 0;
+    transform: translate3d(0, 0, 0);
+}
+
+#vt_template_magazine .article-body .vt-mag-pullQuote,
+#vt_template_magazine .article-body .vt-mag-pullOutdent {
+  float: none!important;
+  width: 100%!important;
+  margin: 0!important;
+  padding: 0!important;
+  clear: both!important;
+}
+
+[class*="pull-"]{
+  float: none!important;
+  margin: 0!important;
+}
+
+footer .vt-footer-hide {
+  display: block;
+}
+
+/* Feature media overrides */
+
+/************************************** BEGIN FULL WIDTH FEATURED MEDIA */
+
+.vt-featured-media-assets .vt-featured-media-title,
+.vt-featured-media-assets .vt-featured-media-title p,
+.vt-featured-media-assets .vt-featured-media-info,
+.vt-ctaLink.vt-featured-media-action,
+.vt-ctaLink.vt-featured-media-collapse {
+  display: block;
+  position: relative;
+  width: 100%;
+  bottom: auto;
+  left: 0;
+  margin: 0;
+}
+
+.vt-featured-media-assets .vt-featured-media-info  {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/************************************** END FULL WIDTH FEATURED MEDIA */
+
+/************************************** BEGIN OUR VISION SECTION */
+
+.vt-our-vision-title h2 {
+  transform: none;
+  top: auto;
+  left: auto;
+}
+
+.vt-our-vision .vt-our-vision-section.research::before {
+  content: none;
+}
+
+/************************************** END OUR VISION SECTION */
+
+/* Feature grid overrides */
+
+.fg-mixed-2x2-row > .vt-vtcontainer-content,
+.fg-mixed-3x2-row > .vt-vtcontainer-content,
+.vt-feature-grid > .vt-vtcontainer-content,
+.fg-grid-item-center .fg-grid-item-info,
+.fg-tall-1x2 .fg-grid-item > .vt-vtcontainer-content,
+.fg-big-2x2 .fg-grid-item > .vt-vtcontainer-content,
+.fg-big-2x2 .fg-grid-item-center > .vt-vtcontainer-content,
+.fg-mixed-2x2-row .fg-grid-item > .vt-vtcontainer > .vt-vtcontainer-content,
+.fg-mixed-2x2-row .fg-grid-item-center > .vt-vtcontainer > .vt-vtcontainer-content,
+.fg-mixed-3x2-row .fg-grid-item > .vt-vtcontainer > .vt-vtcontainer-content,
+.fg-mixed-3x2-row .fg-grid-item-center > .vt-vtcontainer > .vt-vtcontainer-content,
+.fg-mixed-2x2-row .fg-wide-2x1 > .vt-vtcontainer > .vt-vtcontainer-content,
+.fg-mixed-3x2-row .fg-wide-2x1 > .vt-vtcontainer > .vt-vtcontainer-content {
+  display: block;
+}
+
+.fg-mixed-2x2-row .fg-wide-2x1 .fg-wide-2x1-holder,
+.fg-mixed-3x2-row .fg-wide-2x1 .fg-wide-2x1-holder,
+.fg-grid-item .fg-grid-item-info,
+.fg-grid-item .fg-grid-item-image,
+.fg-grid-item .fg-grid-item-info-wrapper,
+.fg-grid-item .fg-grid-item-info-wrapper > .vt-vtcontainer-content,
+.fg-grid-item-center .fg-grid-item-info-wrapper,
+.fg-grid-item-center .fg-grid-item-info-wrapper > .vt-vtcontainer-content {
+   position: relative;
+ }
+
+ .fg-grid-item-center .fg-grid-item-info {
+   background-color: #861f41;
+ }
+
+ /************************************* BEGIN BIO PAGE OVERRIDES */
+
+.bio-content .vt-bio-image img {
+ border-radius: 0;
+}
+
+ /************************************* END BIO PAGE OVERRIDES */
+
+ /************************************* BEGIN CALL TO ACTION OVERRIDES */
+ .vt-callToAction-supplement-fig-container{
+   display: none!important;
+ }
+ /************************************* END CALL TO ACTION OVERRIDES */
