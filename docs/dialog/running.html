@@ -68,18 +68,24 @@
 </head>
 
 <body>
-    <h1>Dialog</h1>
-    <h2>Variation</h2>
-    <ul>
-        <li>Container with document role inside container with dialog role.</li>
-        <li>Container with document role does not have tabindex set and focus is set to Close button immediately on opening dialog. All content is in this dialog.</li>
-        <li>Container with document role has aria-labelledby pointing to h2 and aria-describedby pointing to a visible description in the dialog.</li>
-        <li>In closed state, dialog has display:absolute and visibility:hidden. In opened state, position is set to fixed.</li>
-        <li></li>
-        <li></li>
-    </ul>
     <div id="notdialog" aria-hidden="false">
+        <h1>Dialog</h1>
+        <h2>Variation</h2>
+        <ul>
+            <li>Container with document role inside container with dialog role.</li>
+            <li>Container with document role does not have tabindex set and focus is set to Close button immediately on opening dialog. All content is in this dialog.</li>
+            <li>Container with document role has aria-labelledby pointing to h2 and aria-describedby pointing to a visible description in the dialog.</li>
+            <li>In closed state, dialog has display:absolute and visibility:hidden. In opened state, position is set to fixed.</li>
+            <li></li>
+            <li></li>
+        </ul>
         <button id="open">open dialog</button>
+
+        <h2>Feedback</h2>
+        <h3>iOS</h3>
+        <ul>
+            <li></li>
+        </ul>
     </div>
     <div id="dialog" role="dialog" aria-labelledby="heading" class="closed">
         <div role="document" id="document">
@@ -94,11 +100,6 @@
             </form>
         </div>
     </div>
-    <h2>Feedback</h2>
-    <h3>iOS</h3>
-    <ul>
-        <li></li>
-    </ul>
     <div class="modal-overlay closed" id="modalOverlay">
     </div>
     <!-- <script src="" async defer></script> -->
