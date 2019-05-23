@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <title>Dialog test</title>
+    <meta name="description" content="A test for dialogs">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            max-width: 100%;
+            height: 400px;
+            max-height: 100%;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: white;
+            z-index: 1010;
+            /* -webkit-box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.75);
+            box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.75); */
+        }
+        
+        #dialog.closed {
+            display: none;
+        }
+        
+        #document {
+            /* cover the modal */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* spacing as needed */
+            /* padding: 20px 50px 20px 20px; */
+            /* let it scroll */
+            overflow: auto;
+        }
+        
+        .modal-overlay {
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-overlay.closed {
+            display: none;
+        }
+        
+        .close {
+            position: absolute;
+            right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dialog</h1>
+    <h2>Variation</h2>
+    <ul>
+        <li>Container with document role inside container with dialog role.</li>
+        <li>Container with document role does not have tabindex set and focus is set to Close button immediately on opening dialog. All content is in this dialog.</li>
+        <li>Container with document role has aria-labelledby pointing to h2 and aria-describedby pointing to a visible description in the dialog.</li>
+        <li>In closed state, dialog has display:absolute and visibility:hidden. In opened state, position is set to fixed.</li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="notdialog" aria-hidden="false">
+        <button id="open">open dialog</button>
+    </div>
+    <div id="dialog" role="dialog" aria-modal="true" aria-labelledby="heading" aria-describedby="desc" class="closed">
+        <div role="document" id="document">
+            <button aria-label="close" class="close">X</button>
+            <h2 id="heading">My Dialog</h2>
+            <p id="desc">A description of my dialog.</p>
+            <form>
+                <label for="first">First </label>
+                <input type="text" name="first" id="first">
+                <label for="last">Last </label>
+                <input type="text" name="last" id="last">
+            </form>
+        </div>
+    </div>
+    <h2>Feedback</h2>
+    <h3>iOS</h3>
+    <ul>
+        <li></li>
+    </ul>
+    <div class="modal-overlay closed" id="modalOverlay">
+    </div>
+    <!-- <script src="" async defer></script> -->
+    <script>
+        var notdialog = document.querySelector("#notdialog");
+        var modal = document.querySelector("#dialog");
+        var modalOverlay = document.querySelector("#modalOverlay");
+        var closeButton = document.querySelector(".close");
+        var openButton = document.querySelector("#open");
+        var innerDoc = document.querySelector("#document");
+
+        var focusableEls = modal.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'),
+            firstFocusableEl = focusableEls[0];
+        lastFocusableEl = focusableEls[focusableEls.length - 1];
+        KEYCODE_TAB = 9;
+
+        var trapFocus = function(e) {
+            var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+            var isEscapePressed = (e.key === "Escape");
+
+            if (isEscapePressed) {
+                close();
+            }
+
+            if (!isTabPressed) {
+                return;
+            }
+
+            if (e.shiftKey) /* shift + tab */ {
+                if (document.activeElement === firstFocusableEl) {
+                    lastFocusableEl.focus();
+                    e.preventDefault();
+                }
+            } else /* tab */ {
+                if (document.activeElement === lastFocusableEl) {
+                    firstFocusableEl.focus();
+                    e.preventDefault();
+                }
+            }
+
+        }
+
+        var open = function() {
+            console.log('open');
+            modal.classList.toggle("closed");
+            modalOverlay.classList.toggle("closed");
+            notdialog.setAttribute("aria-hidden", "true");
+            modal.addEventListener('keydown', trapFocus);
+            closeButton.focus();
+        }
+
+        var close = function() {
+            console.log('close');
+            modal.removeEventListener('keydown', trapFocus);
+            notdialog.setAttribute("aria-hidden", "false");
+            openButton.focus();
+            modal.classList.toggle("closed");
+            modalOverlay.classList.toggle("closed");
+        }
+
+        closeButton.addEventListener("click", close);
+        modalOverlay.addEventListener("click", close);
+
+        openButton.addEventListener("click", open);
+    </script>
+</body>
+
+</html>
