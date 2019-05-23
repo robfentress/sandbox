@@ -73,7 +73,7 @@
     <h1>Dialog</h1>
     <h2>Variation</h2>
     <ul>
-        <li>Container with document role inside container with dialog role</li>
+        <li>Container with document role inside container with dialog role.</li>
         <li>Container with document role has tabindex="-1" and focus is set to it immediately on opening dialog. All content is in this dialog.</li>
         <li>Container with document role has aria-labelledby pointing to h2 and aria-describedby pointing to a visible description in the dialog.</li>
         <li>In closed state, dialog has display:absolute and visibility:hidden. In opened state, position is set to fixed.</li>
@@ -144,7 +144,7 @@
             modalOverlay.classList.toggle("closed");
             notdialog.setAttribute("aria-hidden", "true");
             modal.addEventListener('keydown', trapFocus);
-            document.focus();
+            innerDoc.focus();
         }
 
         var close = function() {
