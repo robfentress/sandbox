@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inner dialog</title>
+</head>
+
+<body>
+    <div class="vt-access-dialog">
+        <button onclick="accessToggle()" class="vt-access-dialog-close" aria-label="Close Universal Access dialog">
+      <svg class="svg-inline--fa fa-times fa-w-10" focusable="false" aria-hidden="true" data-prefix="far" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"></path></svg><!-- <span class="far fa-times" focusable="false" aria-hidden="true"></span> -->
+      <span class="sr-only">Close Universal Access dialog</span>
+    </button>
+        <span id="vt_access_dialog_label" class="vt-access-dialog-label" aria-hidden="true">Universal Access Options</span>
+        <ul class="vt-access-options">
+            <li class="vt-access-item">
+                <a href="#vt_main" onclick="accessToggle()" class="vt-access-item-link"><img src="/local_assets/www.assets.cms.vt.edu/images/vt-accessibility_skip-content.svg" alt="" class="vt-access-item-linkImage vt-transparent-bg" focusable="false" aria-hidden="true"><span class="vt-access-item-linkText">Skip to main content</span></a>
+            </li>
+            <li class="vt-access-item">
+                <a href="https://vt.edu/accessibility/barrier.html" onclick="accessToggle()" class="vt-access-item-link"><img src="/local_assets/www.assets.cms.vt.edu/images/vt-accessibility_report-barrier.svg" alt="" class="vt-access-item-linkImage vt-transparent-bg" focusable="false" aria-hidden="true"><span class="vt-access-item-linkText">Report a barrier</span></a>
+            </li>
+            <li class="vt-access-item">
+                <a id="vt_ua_underlineLinks" href="javascript:void(0);" onclick="linkUnderlineToggle();" class="vt-access-item-link" role="button" aria-pressed="false"><img src="/local_assets/www.assets.cms.vt.edu/images/vt-accessibility_underline.svg" alt="" class="vt-access-item-linkImage vt-transparent-bg" focusable="false" aria-hidden="true"><span class="vt-access-item-linkText">Turn link underline <span class="vt-underline-on">On</span>
+                    <span
+                        class="vt-underline-off">Off</span>
+                        </span>
+                </a>
+            </li>
+            <li class="vt-access-item">
+                <a href="https://vt.edu/accessibility.html" onclick="accessToggle()" class="vt-access-item-link"><img src="/local_assets/www.assets.cms.vt.edu/images/vt-accessibility_accessibility-portal.svg" alt="" class="vt-access-item-linkImage vt-transparent-bg" focusable="false" aria-hidden="true"><span class="vt-access-item-linkText">Accessibility portal</span></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
