@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Dialog test</title>
+    <title>Modal test</title>
     <meta name="description" content="A test for dialogs">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -69,17 +69,15 @@
 
 <body>
     <div id="notdialog" aria-hidden="false">
-        <h1>Dialog</h1>
+        <h1>Modal test</h1>
         <h2>Variation</h2>
         <ul>
             <li>Container with document role inside container with dialog role.</li>
             <li>Container with document role does not have tabindex set and focus is set to Close button immediately on opening dialog. All content is in this dialog.</li>
             <li>Container with document role has aria-labelledby pointing to h2 and aria-describedby pointing to a visible description in the dialog.</li>
             <li>In closed state, dialog has display:absolute and visibility:hidden. In opened state, position is set to fixed.</li>
-            <li></li>
-            <li></li>
         </ul>
-        <button id="open">open dialog</button>
+        <button id="open">open modal</button>
 
         <h2>Feedback</h2>
         <h3>iOS</h3>
@@ -89,9 +87,9 @@
     </div>
     <div id="dialog" role="dialog" aria-labelledby="heading" class="closed">
         <div role="document" id="document">
-            <h2 id="heading" tabindex="-1">My Dialog</h2>
+            <h2 id="heading" tabindex="-1">My Modal</h2>
             <button aria-label="close" class="close">X</button>
-            <p id="desc">A description of my dialog.</p>
+            <p id="desc">A description of my modal.</p>
             <form>
                 <label for="first">First </label>
                 <input type="text" name="first" id="first">
@@ -149,7 +147,7 @@
             modalOverlay.classList.toggle("closed");
             notdialog.setAttribute("aria-hidden", "true");
             modal.addEventListener('keydown', trapFocus);
-            heading.focus();
+            closeButton.focus();
         }
 
         var close = function() {

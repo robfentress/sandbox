@@ -1,0 +1,612 @@
+html {
+  min-height:100%;
+}
+
+body {  
+  min-height:100%;
+  color:#333333;
+  font-family:"Acherus Grotesque",sans-serif;
+  font-size:16px;
+  line-height:1.375em;
+  margin-bottom:60px;
+  background-color:#557082;
+  background-image:url(../images/hokie-stone-fall.jpg);
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
+  height:100%;
+  width:100%;
+}
+
+/*===================================
+  TEMPLATE STYLES
+ *===================================*/
+.util-nav-menu {
+  display:none;
+  position: relative;
+  background-color: rgba(0, 0, 0, 1.0);
+  max-height: 35px;
+  width: 100%;
+  min-height: 35px;
+}
+.nav-utilities {
+    padding: 8px 20px 0 0;
+}
+.home-vt-toplinks {
+  color: rgba(255, 255, 255, 1.0);
+  z-index: 9999;
+  margin: 0;
+  padding: 0 0 0 20px;
+  min-height: 35px;
+}
+.nav-utilities ul li {
+  float: left;
+  padding-left: 5px;
+  list-style: none;
+}
+.nav-utilities ul li a, .nav-utilities ul li {
+  color: #efefef;
+  font-size: 11px;
+  font-weight: 400;
+}
+.home-vt-toplinks li {
+  display: inline-block;
+}
+.container {
+  position:relative;
+  width:auto;
+  margin-left:8px;
+  margin-right:8px;
+}
+.whitebackground {
+  background:rgba(225,225,225,0.9);
+  padding:20px 20px 0 20px;
+}
+.centering {
+  float:none;
+  margin:0 auto;
+}
+header {
+  background-color:white;
+  margin-left:0px !important;
+  margin-right:0px !important;
+}
+header.container div.row {
+  min-height:48px;
+}
+ul.nav {
+}
+.navbar{
+  font-size:1.0em;
+  font-family:"PT Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color:white;
+  text-transform:uppercase;
+  border:none;
+  border-bottom:4px solid #FF6600; /* orange bar leaves gap at <= 3 px*/
+  border-radius:0px 0px 5px 5px;
+  margin-left:0px;
+  margin-right:0px; 
+  min-height:22px; /* override min-height to hide "row 2" navbar line. */
+}
+.navbar-header{ 
+  position:absolute; right:8px; top:-44px;
+}
+.navbar-collapse {
+  border-top:0px; /* get rid of white or black bar at top that overlaps logo. */
+  border-color:black;
+  box-shadow:none; /* remove the ghost line at the top of navbar-collapse */
+}
+.navbar {
+  font-size:1.2em;
+}
+.nav li.dropdown {
+  display:inline-block;
+}
+.navbar-nav > li > a {
+  line-height:normal; 
+}
+.navbar ul ul {
+  text-transform:none;  /* undo uppercase in dropdowns */
+  background-color:#250102; /* reddish black */
+}
+.navbar li.open, .navbar a.dropdown:hover, .navbar a.dropdown:focus, .navbar .open > a{
+  background-color:#250102;
+  border-radius:0px 0px 0px 0px;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color:black;  
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+  color:#ddd;
+  padding:.7em 20px .7em 40px;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color:#888;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+  background-color:#eee;
+}
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+  color:black;
+}
+.dropdown-menu {
+  font-size:1.0em;
+  padding:0;
+  margin:0;
+}
+.vt-logo {
+}
+header  h1, header img, header .img-responsive {
+  display:inline-block;
+}
+header h1 {
+  color:black;
+  font-size:48px;
+  font-family:"Gineso Condensed";
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  position:relative;
+  padding:0;
+  margin:0;
+  top:12px;
+  left:50px;
+}
+footer {
+  padding: 12px 6px;
+  border-top: 1px solid #ddd;
+  color: #666;
+  font-size: 1.25rem;
+  line-height: 1.375rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 20px -20px -10px -20px;
+  background-color: white;
+  clear: both;
+}
+tr th, tr td {
+  padding:8px;
+  border:2px solid white;
+}
+tr th {
+  background-color:#ccc;
+  color:white;
+}
+tr td {
+  background-color:#efefef;
+}
+
+
+/*===================================
+  CONTENT STYLES
+ *===================================*/
+h1 {
+  font-size:2.25em;
+  line-height:1.125em;
+}
+h2 {
+  font-size:1.75em;
+  line-height:1.25em;
+}
+h3 {
+  font-size:1.25em;
+  line-height:1.25em;
+}
+h4,h5,h6 {
+  font-size:1.125em;
+  line-height:1.222em;
+}
+#login-error {
+  background-color:#f5f5eB;
+  margin-bottom:0.5em;
+  border:none;
+}
+#login-error .error {
+  font-size:1.2em;
+}
+#error, #info, #warn, .panel {
+  margin:20px;
+  padding:16px;
+  background-color:white;
+  border-top:16px solid #dbd8bc;
+  border-right:2px solid #dbd8bc;
+  border-bottom:2px solid #dbd8bc;
+  border-left:2px solid #dbd8bc;
+  border-radius:10px;
+  overflow:hidden;
+}
+#error {
+  border-top:16px solid #C00000;
+  border-right:2px solid #C00000;
+  border-bottom:2px solid #C00000;
+  border-left:2px solid #C00000;
+}
+#info {
+  border-top:16px solid #006600;
+  border-right:2px solid #006600;
+  border-bottom:2px solid #006600;
+  border-left:2px solid #006600;
+}
+#warn {
+  border-top:16px solid #CC6600;
+  border-right:2px solid #CC6600;
+  border-bottom:2px solid #CC6600;
+  border-left:2px solid #CC6600;
+}
+.note {
+  color:#666;
+}
+tr.warn td {
+  background-color:#ffe6c7;
+}
+tr.warn a {
+  display:inline;
+  background:#fff;
+  padding:3px 10px;
+  position:relative;
+  top:2px;
+  color:#333;
+  font-weight:bold;
+  text-decoration:none;
+}
+tr.warn a:hover {
+  background:#b00;
+  color:#fff;
+}
+.spacer {
+  height:20px;
+}
+.bigger {
+  font-size:1.3em;
+}
+.smaller {
+  font-size:0.8em;
+}
+#switch {
+  color:#666;
+  font-weight:bold;
+  font-size:1.1em;
+  text-align:center;
+}
+.clear {
+  clear:both;
+}
+.block-text {
+  margin-left:14%;
+  margin-right:14%;
+}
+.field-hint {
+  background-color:#FCF0AD;
+  color:#666;
+  border:1px solid #e0d69a;
+  display:none;
+  position:absolute;
+  padding:0 0.2em;
+}
+.hpad {
+  padding:0 16px;
+}
+.vpad, .vpad li {
+  padding:3px 0;
+}
+#splogo {
+  display:block;
+  margin:10px 0;
+}
+.attr-name {
+  font-weight:bold;
+}
+.attr-info {
+  color:#666;
+  font-weight:normal;
+}
+.notification {
+  font-weight:bold;
+}
+p.notification {
+  margin:20px 0;
+}
+label {
+  display:inline-block;
+}
+input[type="text"], input[type="password"], select {
+  width:15em;
+}
+.field {
+  margin:8px 0 2px 0;
+}
+.buttons {
+  margin:10px 0 5px 0;
+}
+form {
+  display:block;
+}
+fieldset.pid label {
+  width:5em;
+}
+fieldset.pid div.checkboxes label {
+  width:auto;
+}
+.big-buttons {
+  text-align:center;
+  margin:2rem 0;
+}
+.big-buttons form {
+  display:inline-block;
+}
+.big-buttons button {
+  display:inline-block;
+  padding:20px;
+  margin:8px;
+  min-width:200px;
+  max-width:340px;
+  font-size:1.1em;
+  font-weight:bold;
+  overflow:hidden;
+}
+@media only screen and (max-width: 360px)
+{
+  .big-buttons button {
+    width:auto;
+  }
+}
+.text-right {
+  text-align:right;
+}
+.success {
+  background:url(../images/success-32x32.png) no-repeat left center;
+  line-height:36px;
+  padding-left:36px;
+}
+.failure {
+  background:url(../images/failure-32x32.png) no-repeat left center;
+  line-height:36px;
+  padding-left:36px;
+}
+#duo_iframe {
+  width:100%;
+  min-height:440px;
+  margin-top:20px;
+}
+.centered {
+  text-align:center;
+}
+
+
+/*===================================
+  VIEWPORT SIZING
+ *===================================*/
+
+@media only screen and (max-width: 360px) {
+  .hidden-phone-vertical {
+    display: none !important;
+  }
+  .navbar-header{ 
+    position:absolute; right: 8px; top:-44px;
+  }
+}
+
+@media only screen and (min-width: 361px) {
+  .visible-phone-vertical {
+    display: none !important;
+  }
+}
+
+/* Custom, Breakpoint for smallish phone */ 
+@media only screen and (max-width :321px) {
+  .container {
+    width:auto;
+    margin-left:8px;
+    margin-right:8px;
+  }
+  .navbar-header{ 
+    position:absolute; right:8px; top:-44px;
+  }
+}
+
+/* Custom Breakpoint for biggish phones */ 
+@media only screen and (max-width :481px) {
+  body {
+    line-height:1.25;
+  }
+  h1 {
+    font-size:2em;
+    line-height:1.25em;
+  }
+  h2 {
+    font-size:1.625em;
+    line-height:1.153em;
+  }
+  h3 {
+    font-size:1.375em;
+    line-height:1.136em;
+  }
+  h4,h5,h6 {
+    font-size:1.125em;
+    line-height:1.111em;
+  }
+  .vt-logo {
+  }
+  .whitebackground {
+    padding:20px 10px 0 10px;
+  }
+  footer {
+    margin: 20px -10px -10px -10px;
+  }
+  .navbar {
+    font-size:1.8em;
+  }
+  .dropdown-menu {
+    font-size:1.0em;
+    line-height:1.5em;
+  }
+  label {
+    display:block;
+  }
+}
+
+/* Custom Breakpoint for smallish tablets */ 
+@media only screen and (min-width :482px) {
+  .container {
+    width:auto;
+    margin-left:16px;
+    margin-right:16px;
+  }
+}
+
+/* Bootstrap - Small Devices, Tablets */
+@media only screen and (min-width :768px) {
+  .util-nav-menu {
+    display:block;
+  }
+  h1 {
+    font-size:2.25em;
+    line-height:1.125em;
+  }
+  h2 {
+    font-size:1.75em;
+    line-height:1.25em;
+  }
+  h3 {
+    font-size:1.25em;
+    line-height:1.25em;
+  }
+  h4,h5,h6 {
+    font-size:1.125em;
+    line-height:1.222em;
+  }
+  .container {
+    width:auto;
+    margin-left:32px;
+    margin-right:32px;
+  }
+  .whitebackground {
+    padding:20px 40px 0 40px;
+  }
+  footer {
+    margin:30px -40px -10px -40px;
+  }
+  .navbar {
+    text-transform:uppercase;  /* force text to uppercase */
+    background-color:white;
+    border:none;
+    border-bottom:4px solid #FF6600; /* orange bar leaves gap at <= 3 px*/
+    border-radius:0px 0px 5px 5px;
+    margin-left:0px !important;
+    margin-right:0px !important; 
+  }
+  .navbar {
+    font-size:1.0em;
+  }
+  .dropdown-menu {
+    font-size:1.2em;
+    padding:6px 0;
+  }
+  .nav > .dropdown > a, .nav > li > a.dropdown {
+    padding:8px 15px 8px 15px;
+  }
+  .navbar li.open, .navbar a.dropdown:hover, .navbar a.dropdown:focus, .navbar .open > a {
+    background-color:#FF6600 !important;
+    color:white !important;
+    border-radius:10px 10px 0px 0px;
+  }
+  .navbar ul ul {
+    text-transform:none;  /* undo uppercase in dropdowns */
+    background-color:white;
+  }
+  .navbar ul li li {
+    background-color:white;
+  }
+  .navbar ul ul li {
+    background-color:white;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color:#333;
+    padding-bottom:0px;
+    padding:6px 20px;
+  }
+}
+
+/* Bootstrap - Medium Devices, Desktops */
+@media only screen and (min-width :992px) {
+  h1 {
+    font-size:2.5em;
+    line-height:1.125em;
+  }
+  h2 {
+    font-size:2em;
+    line-height:1.25em;
+  }
+  h3 {
+    font-size:1.5em;
+    line-height:1.25em;
+  }
+  h4,h5,h6 {
+    font-size:1.125em;
+    line-height:1.222em;
+  }
+  input[type="text"] {
+    font-size:1em;
+  }
+  .container {
+    width:auto; /* Provides fluid behavior to maximize content. */
+    margin-left:40px;
+    margin-right:40px;
+  }
+  .dropdown-menu {
+    font-size:1.0em;
+  }
+}
+
+/* Bootstrap - Large Devices, Wide Screens */
+@media only screen and (min-width :1200px) {
+  body {
+    font-size:18px;
+  }
+  input[type="text"] {
+    font-size:1em;
+  }
+  .container {
+    width:auto; /* This overrides Bootstrap's 1200 pixel maximum. */
+    margin-left:60px;
+    margin-right:60px;
+  }
+  main.container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .whitebackground {
+    padding:20px 60px 0 60px;
+  }
+  footer {
+    margin:40px -60px -10px -60px;
+  }
+  #duo_iframe {
+    min-height:400px;
+  }
+  .navbar {
+    font-size:16px;
+  }
+}
+
+/* At phone sizes, we want to allow URLs and other long words to break as needed to fit on screen. */
+@media only screen and (max-width: 414px)
+{
+  main {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+     -ms-word-break: break-all;
+         word-break: break-all;
+
+         word-break: break-word;
+
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
