@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments (Example)</title>
+    <style>
+        #reminder {
+            position: absolute;
+            left: .5em;
+            font-size: 2em;
+            top: .5em;
+            color: #ffcc99;
+            padding: .25em;
+            background-color: #484848;
+            border: 1px solid black;
+        }
+        
+        #figure {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        
+        .due {
+            color: #ee0000;
+        }
+        
+        .hokies {
+            color: #861f41;
+            font-size: 18pt;
+        }
+        
+        a {
+            color: #c64600;
+        }
+        
+        a:hover,
+        a:focus {
+            color: #861f41;
+        }
+        
+        .flex-grid {
+            display: flex;
+        }
+        
+        @media (max-width:1350px) {
+            .flex-grid {
+                display: block;
+            }
+            .flex-grid .col img {
+                width: 100%;
+                height: auto;
+            }
+            .flex-grid.grades .col img {
+                max-width: 553px;
+            }
+            .flex-grid.time .col img {
+                max-width: 875px;
+            }
+        }
+        
+        table {
+            border: 1px solid black;
+            padding: 1em;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background-color: #5e5e5e;
+            color: white;
+        }
+        
+        thead th {
+            border: 1px solid white;
+            padding: 1em;
+        }
+        
+        thead td {
+            border: 1px solid white;
+            padding: 1em;
+        }
+        
+        .grades thead th {
+            width: 100px;
+        }
+        
+        .grades thead td {
+            width: 13px;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background-color: #ebebeb;
+        }
+        
+        tbody tr th,
+        tbody tr td {
+            border: 1px solid black;
+            padding: 1em;
+            text-align: center;
+        }
+        
+        tbody tr th {
+            width: 13px;
+        }
+        
+        .grades tbody tr td {
+            width: 100px;
+        }
+        
+        .time tbody tr td {
+            width: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Assignments</h1>
+    <h2>Being Late Affects Grades</h2>
+    <div id="figure"><img style="width: 100%;" src="../resources/images/homework.jpg" alt="a cup of coffee beside an open notebook with a pen on it in front of some books" />
+        <div id="reminder">Drink some coffee. It might help.</div>
+    </div>
+    <p>As shown in the pie chart and table, some folks are having trouble getting their assignments in on time and it is really affecting their grade. Make sure to pay attention to due dates!</p>
+    <div class="flex-grid grades">
+        <div class="col">
+            <figure aria-labelledby="grades">
+                <img src="../resources/images/chart-example.png" alt="Grades pie chart (see following data table for details)" width="553" height="445" />
+            </figure>
+        </div>
+
+        <div class="col">
+            <table>
+                <caption id="grades">Grades</caption>
+                <thead>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th scope="col"><abbr title="Number of Students"># Students</abbr></th>
+                        <th scope="col"><abbr title="Percentage of Students">% Students</abbr></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">A</th>
+                        <td>1</td>
+                        <td>5.6</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">B</th>
+                        <td ">1</td>
+                        <td>5.6</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">C</th>
+                        <td>2</td>
+                        <td>11.1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">D</th>
+                        <td>4</td>
+                        <td>22.2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">F</th>
+                        <td>10</td>
+                        <td>55.6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h3>Worse Over Time</h3>
+    <p>And as shown in the line graph, this has been getting worse over time, with the number of A's in the class going from 10 to 1 and the number of F's going from 1 to 10&nbsp;between 9/1/18 - 11/1/18</p>
+    <div class="flex-grid time ">
+        <div class="col ">
+            <figure aria-labelledby="time ">
+                <img src="../resources/images/grades-over-time-accessible.png " alt="Grades over time chart (details in following table) " width="875 " height="690 " />
+            </figure>
+        </div>
+
+        <div class="col ">
+            <table>
+                <caption id="time ">Grades Over Time</caption>
+                <thead>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th scope="col ">9/1/18</th>
+                        <th scope="col ">10/1/18</th>
+                        <th cope="col ">11/1/18</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row ">A</th>
+                        <td>10</td>
+                        <td>7</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">B</th>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">C</th>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">D</th>
+                        <td>1</td>
+                        <td>4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">F</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h2>Instructions</h2>
+    <p>Complete the assignments below. They will be graded as per the policy outlined in our&nbsp;<a href="syllabus.html ">syllabus</a>.</p>
+    <p><strong style="color: #ee0000; ">Dont't forget</strong> the items that are due tomorrow:</p>
+    <ul>
+        <li><strong class="due ">List of group members (due tomorrow)</strong></li>
+        <li><strong class="due ">Project proposal  (due tomorrow)</strong></li>
+        <li>Discussion forum assignment 4</li>
+        <li>Quiz 4</li>
+    </ul>
+    <p>And don't forget the game this Friday.</p>
+    <p><strong class="hokies ">Go Hokies!</strong></p>
+</body>
+
+</html>
