@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS image sprite test</title>
+
+
+    <style>
+        body {
+            font: normal 85% arial, Verdana, helvetica, sans-serif;
+            color: #333;
+            background: #fff;
+            padding: 0 1em;
+        }
+        
+        caption {
+            text-align: left;
+            font-weight: bold;
+            font-size: large
+        }
+        
+        h1,
+        h2 {
+            color: #630;
+            background: #fff;
+            padding-bottom: 0.5em;
+            margin-bottom: 0;
+        }
+        
+        a.sprite {
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            text-decoration: underline;
+        }
+        
+        img {
+            border: none
+        }
+    </style>
+
+    <script>
+        function HCTest() {
+
+            var objDiv, strColor, objFlag;
+
+            //reference to img element used to check if images are disabled
+            objFlag = document.getElementById('flag');
+
+            //Create a test div
+            objDiv = document.createElement('div');
+
+            //Set its color style to something unusual
+            objDiv.style.color = 'rgb(31,41,59)';
+
+            //Attach to body so we can inspect it
+            document.body.appendChild(objDiv);
+
+            //Use standard means if available, otherwise use the IE methods
+
+            strColor = document.defaultView ? document.defaultView.getComputedStyle(objDiv, null).color : objDiv.currentStyle.color;
+
+            //get rid of extra spaces in result
+            //strColor = strColor.replace(/ /g,"");
+
+            //Delete the test DIV
+
+            document.body.removeChild(objDiv);
+
+            //Check if we got back what we set (strColor== ??) If not we are in high contrast mode
+            // Use .offsetwidth and .readyState (for IE) to check if images are enabled //If either images are disabled or high contrast is enabled (or both) the CSS stylesheet link will not be added to the page and the visually hidden text will be displayed in place of the missing background image
+
+            if (((objFlag.offsetWidth === 1 && objFlag.readyState === 'complete') || (objFlag.offsetWidth === 1 && objFlag.readyState === undefined)) && (strColor === 'rgb(31,41,59)' || strColor === 'rgb(31, 41, 59)'))
+
+            {
+
+                var objHead = document.getElementsByTagName('head');
+                var objCSS = objHead[0].appendChild(document.createElement('link'));
+                objCSS.rel = 'stylesheet';
+                objCSS.href = 'alt.css';
+                objCSS.type = 'text/css';
+
+            }
+        }
+    </script>
+
+
+</head>
+
+<body onload="HCTest();">
+    <img src="clear.gif" alt="" id="flag">
+    <p><a href="http://www.paciellogroup.com/blog/2012/08/notes-on-accessible-css-image-sprites/">back to article</a></p>
+    <h1>Example accessible CSS image sprite </h1>
+    <p> <a href="javascript:alert(document.getElementById('flag').naturalHeight);" class="sprite"><span class="visually-hidden">Select</span></a></p>
+
+    <hr>
+    <p>Test by disabling images in your browser or enabling windows high contrast mode (<kbd>Shift + Alt + Prnt Scrn</kbd>). Doing either should result in the following:</p>
+
+
+    <p><a href="#">Select</a></p>
+
+    <p><strong>Note:</strong> remember to refresh page after changing settings</p>
+    <hr>
+    <p><strong>Author:</strong> steve faulkner <a href="http://www.paciellogroup.com">The Paciello Group</a><br />
+        <strong>contact:</strong> <a href="mailto:sfaulkner@paciellogroup.com">sfaulkner@paciellogroup.com</a></p>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/2.0/uk/88x31.png" /></a><br /> This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span>    is licenced under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/uk/">Creative Commons Licence</a>.
+    <p>Updated: 20/08/2012</p>
+</body>
+
+</html>
