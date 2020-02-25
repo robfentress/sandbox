@@ -28,12 +28,18 @@
             padding-bottom: 0.5em;
             margin-bottom: 0;
         }
-        
-        a.sprite {
+        /* a.sprite {
             background-repeat: no-repeat;
             background-position: center;
             display: inline-block;
             text-decoration: underline;
+        } */
+        
+        .sprite {
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            /* text-decoration: underline; */
         }
         
         img {
@@ -94,6 +100,9 @@
     <p><a href="http://www.paciellogroup.com/blog/2012/08/notes-on-accessible-css-image-sprites/">back to article</a></p>
     <h1>Example accessible CSS image sprite </h1>
     <p> <a href="javascript:alert(document.getElementById('flag').naturalHeight);" class="sprite"><span class="visually-hidden">Select</span></a></p>
+
+    <p> <span role="img" aria-labelledby="alt" class="sprite"><span class="visually-hidden" id="alt">Select</span></span>
+    </p>
 
     <hr>
     <p>Test by disabling images in your browser or enabling windows high contrast mode (<kbd>Shift + Alt + Prnt Scrn</kbd>). Doing either should result in the following:</p>
