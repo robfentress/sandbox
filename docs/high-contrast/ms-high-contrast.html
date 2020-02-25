@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors for High Contrast on Background Images</title>
+    <style>
+        div {
+            width: 1280px;
+            height: 526px;
+            background-image: url('at.png');
+        }
+        
+        div>span {
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px);
+            /* IE6, IE7 */
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0 !important;
+            border: 0 !important;
+            height: 1px !important;
+            width: 1px !important;
+            overflow: hidden;
+        }
+        
+        @media screen and (-ms-high-contrast: active) {
+            div {
+                background-image: url('at.png');
+            }
+        }
+        
+        @media screen and (-ms-high-contrast: black-on-white) {
+            div {
+                background-image: url('at-bw.png');
+            }
+        }
+        
+        @media screen and (-ms-high-contrast: white-on-black) {
+            div {
+                background-image: url('at-wb.png');
+            }
+        }
+        
+        [role="note"] {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Selectors for High Contrast on Background Images</h1>
+    <p>Try viewing each option below in IE, Edge, Firefox, and Chrome with different Windows High Contrast Mode settings enabled. How are Firefox and Chrome different?</p>
+    <p>Try viewing the page without Windows High Contrast Mode enabled, but disabling images using something like the <a href="https://chrispederick.com/work/web-developer/">Web Developer extension.</a></p>
+    <p role="note">Make sure to refresh the page after trying each of these options, so the changes are applied.</p>
+    <div role="img" aria-labelledby="alt"><span id="alt">Alt text</span></div>
+    <!-- This is still problematic in Firefox, which removes the background image, but does not respect the media queries.  Also, if images don't load, no alt text is displayed. -->
+    <p>See <a href="https://adrianroselli.com/2012/08/css-background-images-high-contrast-mode.html">CSS Background Images & High Contrast Mode</a> for details.</p>
+</body>
+
+</html>
