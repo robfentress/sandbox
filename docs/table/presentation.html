@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table semantics altered using role attribute</title>
+    <style>
+        [role="table"] {
+            display: table;
+        }
+        
+        [role="row"] {
+            display: table-row;
+        }
+        
+        [role="cell"],
+        [role="columnheader"] {
+            display: table-cell;
+            padding: .2em;
+        }
+        
+        [role="columnheader"] {
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Table semantics altered using role attribute</h1>
+    <h2>Table but not a table</h2>
+    <table role="presentation">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>banana</td>
+                <td>yellow</td>
+            </tr>
+            <tr>
+                <td>orange</td>
+                <td>orange</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Not a table but really a table</h2>
+
+    <div role="table">
+        <div role="row">
+            <div scope="col" role="columnheader">Name</div>
+            <div scope="col" role="columnheader">Color</div>
+        </div>
+        <div role="row">
+            <div role="cell">banana</div>
+            <div role="cell">yellow</div>
+        </div>
+        <div role="row">
+            <div role="cell">orange</div>
+            <div role="cell">orange</div>
+        </div>
+    </div>
+</body>
+
+</html>
