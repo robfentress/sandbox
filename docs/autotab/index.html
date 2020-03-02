@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>jQuery Autotab Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="css/screen.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.autotab.js"></script>
+    <script src="js/inputFilter.js"></script>
+    <script>
+        $(function() {
+            $('.number').autotab({
+                filter: 'number',
+                tabOnSelect: true
+            });
+        });
+
+        $(document).ready(function() {
+            $(".num").inputFilter(function(value) {
+                return /^\d*$/.test(value); // Allow digits only, using a RegExp
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Autotab Demo</h1>
+
+        <div class="example">
+            <h2>Non-example</h2>
+            <div>
+                <label id="social">Social Security Number</label>
+                <input type="text" id="number1" class="number" aria-label="first 3 digits" aria-describedby="social" maxlength="3" size="3"> -
+                <input type="text" id="number2" class="number" aria-label="middle 2 digits" aria-describedby="social" maxlength="2" size="2"> -
+                <input type="text" id="number3" class="number" aria-label="last 4 digits" aria-describedby="social" maxlength="4" size="5">
+            </div>
+        </div>
+
+        <div class="example">
+            <div>
+                <h2>Example</h2>
+                <fieldset>
+                    <legend id="social">Social Security Number</legend>
+                    <p id="instructions">Format: ### - ## - #### (<span id="desc">numbers only</span>)</p>
+                    <input type="text" id="num1" aria-label="first 3 digits" aria-describedby="desc" maxlength="3" size="3" class="num"> -
+                    <input type="text" id="num2" aria-label="middle 2 digits" aria-describedby="desc" maxlength="2" size="2" class="num"> -
+                    <input type="text" id="num3" aria-label="last 4 digits" aria-describedby="desc" maxlength="4" size="5" class="num">
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
