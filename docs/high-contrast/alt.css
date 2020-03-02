@@ -11,7 +11,7 @@ span.visually-hidden {
 }
 
 .sprite {
-    background-image: url(select.PNG);
+    background-image: url('select.png');
     text-decoration: none;
     width: 78px;
     height: 25px;
