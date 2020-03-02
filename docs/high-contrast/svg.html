@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG and High Contrast</title>
+    <style>
+        @media screen and (-ms-high-contrast: active) {
+            .box {
+                fill: window;
+            }
+            .text {
+                fill: windowText;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SVG and High Contrast</h1>
+    <p>Try viewing each option below in IE, Edge, Firefox, and Chrome with different Windows High Contrast Mode settings enabled. How are Firefox and Chrome different?</p>
+    <h2>SVG with no background fill</h2>
+    <!-- Text is invisible in Firefox.
+      Chrome doesn't respect Windows High Contrast Mode settings at all, so it looks like it would without it enabled.  -->
+    <svg height="32" width="200">
+      <text class="text" x="5" y="22" fill="#000000" font-size="16px">I love SVG!</text>
+    </svg>
+
+    <h2>SVG with background fill</h2>
+    <!-- Text is visible in Firefox, but it doesn't respect the CSS high contrast media queries.
+      Chrome doesn't respect Windows High Contrast Mode settings at all, so it looks like it would without it enabled.  -->
+    <svg height="32" width="200">
+      <rect class="box" x="0" y="0" width="200" height="32" fill="#FFFFFF"></rect>
+      <text class="text" x="5" y="22" fill="#000000" font-size="16px">I love SVG!</text>
+    </svg>
+    <p>See <a href="http://www.gwhitworth.com/blog/2017/04/how-to-use-ms-high-contrast/">How to use -ms-high-contrast</a> for details.</p>
+    <!--
+    <h2>SVG with no background box</h2>
+    <h3>SVG with no text fill set in SVG or CSS</h3>
+    <svg height="32" width="200">
+    <text x="5" y="22">I love SVG!</text>
+</svg>
+    <h3>SVG with text fill set in SVG but not in CSS</h3>
+    <svg height="32" width="200">
+<text x="5" y="22" fill="black">I love SVG!</text>
+</svg>
+    <h3>SVG with text fill set in CSS but not in SVG</h3>
+    <svg height="32" width="200">
+<text x="5" y="22" class="text">I love SVG!</text>
+</svg>
+    <h3>SVG with text fill set in SVG and overridden in CSS</h3>
+    <svg height="32" width="200">
+      <text fill="black" class="text" x="5" y="22">I love SVG!</text>
+  </svg>
+
+    <h2>SVG with background</h2>
+    <h3>SVG with background set in SVG but not in CSS</h3>
+    <svg height="32" width="200">
+    <rect x="0" y="0" width="200" height="32" fill="white"></rect>
+    <text x="5" y="22" fill="black">I love SVG!</text>
+  </svg>
+
+    <h3>SVG with background set in CSS but not in SVG</h3>
+    <svg height="32" width="200">
+  <rect class="box" x="0" y="0" width="200" height="32"></rect>
+  <text class="text" x="5" y="22" fill="red">I love SVG!</text>
+</svg>
+
+    <h3>SVG with background set in SVG and CSS but text color not set anywhere</h3>
+    <svg height="32" width="200">
+<rect class="box" x="0" y="0" width="200" height="32"></rect>
+<text x="5" y="22">I love SVG!</text>
+</svg> -->
+
+
+</body>
+
+</html>
