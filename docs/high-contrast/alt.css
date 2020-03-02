@@ -16,3 +16,9 @@ span.visually-hidden {
     width: 78px;
     height: 25px;
 }
+
+.img {
+    width: 1280px;
+    height: 526px;
+    background-image: url('at.png');
+}
