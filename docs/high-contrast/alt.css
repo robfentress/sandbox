@@ -10,14 +10,6 @@ span.visually-hidden {
     overflow: hidden;
 }
 
-
-/* a.sprite {
-    background-image: url(select.PNG);
-    text-decoration: none;
-    width: 78px;
-    height: 25px;
-} */
-
 .sprite {
     background-image: url(select.PNG);
     text-decoration: none;
