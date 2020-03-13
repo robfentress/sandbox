@@ -5,12 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .img {
+            background: url(../tlos.png);
+            width: 509px;
+            height: 84px;
+            position: absolute;
+            top: 100px
+        }
+        
+        @media screen and (-ms-high-contrast: active) {
+            .img {}
+        }
+    </style>
 </head>
 
 <body>
     <div style="position: fixed; height:600px; width:500px; background-color: red;"></div>
-    <p style="position:absolute;color:yellow;">test</p>
-    <div style="background:url(../tlos.png); width: 509px; height:84px; position:absolute; top:100px"></div>
+    <p style="position:fixed;">An auditory illusion thought to synchronize brain waves and alter mood is no more effective than other sounds, according to research in adults recently published in eNeuro. The effect reported in other studies might be a placebo but could still have
+        helpful effects for some people. Binaural beats are an auditory illusion caused by listening to two tones of slightly different frequency, one in each ear. The difference in frequencies creates the illusion of a third sound — a rhythmic beat.
+        Neurons throughout the brain begin to send electrical messages at the same rate as the imaginary beat. Many unsupported claims surround binaural beats, including that listening to them decreases anxiety, increases focus, and improves mood. Orozco
+        Perez et al. played binaural and monoaural beats to healthy adults and measured their brain activity with electroencephalography. Monoaural beats don’t rely on the illusion to create the beats because they consist of edited audio tracks of the
+        two different tones together. Both ears hear all three sounds. Brain activity synchronized with both types of beats, but the effect was stronger with monoaural beats. Neither type of beat affected mood. When the binaural beat played, far apart
+        brain areas synchronized with each other at a different frequency than the beat. This may be how binaural beats improve memory and focus. Reference: “Binaural Beats Through the Auditory Pathway: From Brainstem to Connectivity Patterns” by Hector
+        D Orozco Perez, Guillaume Dumas and Alexandre Lehmann, 17 February 2020, eNeuro.</p>
+    <div class="img">
+        <span id="alt"></span>
+    </div>
     <svg viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute; top: 150px">
       <style>
         .small { font: italic 13px sans-serif; }

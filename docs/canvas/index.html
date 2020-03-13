@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="#">before</a>
+    <canvas id="circle" width="200" height="200" aria-label="A circle">
+      <a href="longdesc.html">Long description</a>
+  </canvas>
+    <a href="#">after</a>
+    <script>
+        var c = document.getElementById("circle");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+        ctx.stroke();
+    </script>
+
+</body>
+
+</html>

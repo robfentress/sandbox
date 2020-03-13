@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Success Criteria Disambiguation</title>
+</head>
+
+<body>
+    <h2>LABEL tag not associated with INPUT, but INPUT has title</h2>
+    <div>
+        <label>First Name</label> <input type="text" title="First Name">
+    </div>
+    <h2>LABEL tag associated with INPUT, but INPUT has title that provides additional guidance</h2>
+    <div>
+        <label for="first">First Name</label> <input type="text" id="first" title="Don't abbreviate">
+    </div>
+    <h2>An INPUT, with only a title</h2>
+    <div>
+        <input type="text" title="First name">
+    </div>
+    <h2>An INPUT only labelled by aria-describedby pointing to a DIV</h2>
+    <div id="descLabel">First Name:</div>
+    <div>
+        <input type="text" aria-describedby="descLabel">
+    </div>
+
+</body>
+
+</html>
