@@ -1,0 +1,92 @@
+html,
+body {
+    font-family: "SourceSansPro", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* the revealed content below the summary */
+.revealed {
+    padding: .4rem;
+}
+
+details {
+    border: 1px solid gray;
+    border-radius: .4rem;
+}
+
+details>summary {
+    cursor: pointer;
+    list-style: none;
+    background-color: #E5E1E6;
+    padding: .4rem;
+    border-radius: .4rem;
+}
+
+/* Use box-shadow because it lets us have rounded corners on the focus highlight */
+details>summary:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 0 #ED8B00, 0 0 0 2px #ED8B00;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+summary:before {
+    /* for custom expansion icon, use url data image svg for content, rather than text by default, because some screen readers announce text content and especially because iOS VoiceOver presents the text icon and the text in the summary tag as separate items, which could be confusing because they are really parts of the same control */
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' height='18'%3E%3Cline stroke='%23861F41' x1='0' y1='20' x2='40' y2='20' stroke-width='6'%3E%3C/line%3E%3Cline stroke='%23861F41' x1='20' y1='0' x2='20' y2='40' stroke-width='6'%3E%3C/line%3E%3C/svg%3E");
+    border-radius: .4rem;
+    color: #861F41;
+    background-color: #E5E1E6;
+    float: left;
+    font-size: 1.5rem;
+    margin: -.3rem .3rem 0 0;
+    padding: 0;
+    text-align: center;
+    width: 1.5rem;
+}
+
+/* when open, we need a border on the bottom of summary to separate it from the content revealed */
+details[open] summary {
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: .4rem .4rem 0 0;
+}
+
+/* when expanded, box-shadow handles focus hightlight and keeping border looks funky so get rid of it */
+details[open] summary:focus {
+    border: none;
+}
+
+/* Changes to a minus sign when expanded */
+details[open] summary:before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' height='18'%3E%3Cline stroke='%23861F41' x1='0' y1='20' x2='40' y2='20' stroke-width='6'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* Styles to apply when in Windows High Contrast Mode */
+@media screen and (-ms-high-contrast: active) {
+
+    /* Use text instead of image here so it can be adopt high contrast settings */
+    summary:before {
+        content: "+";
+        color: windowText;
+        background-color: window;
+    }
+
+    details[open] summary:before {
+        content: "-";
+    }
+
+    /* box-shadow doesnt work reliably in hight contrast mode, so use outline instead */
+    details>summary:focus {
+        outline: 1px solid highlight;
+        box-shadow: none;
+    }
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
