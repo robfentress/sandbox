@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Fixing Firefox Flex Layout Tabbing Bug </title>
+		<meta name="description" content="This page contains a fix for a accessibility bug Firefox has when using flex-layout's order CSS property. ">
+		<meta name="author" content="zoltan">
+
+		<meta property="og:title" content="Fixing Firefox Flex Layout Tabbing Bug " />
+		<meta property="og:description" content="This page contains a fix for a accessibility bug Firefox has when using flex-layout's order CSS property. " />
+		<meta property="og:image" content="http://www.useragentman.com/blog/wp-content/uploads/2017/01/flex_chrome_515.gif" />
+
+		<meta name="twitter:card" content="photo">
+		<meta name="twitter:title" content="Fixing Firefox Flex Layout Tabbing Bug ">
+		<meta name="twitter:image" content="http://www.useragentman.com/blog/wp-content/uploads/2017/01/flex_chrome_515.gif">
+		<meta name="author" content="Zoltan Hawryluk">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/2.4.3-tab-order-flex-layout-firefox-bug.css" type="text/css" />
+
+	</head>
+
+	<body class="a11y-fix-firefox-flexbox example-root">
+		<main class="example-main">
+			<h1>CSS Flexbox</h1>
+			<h2>No Ordering Applied</h2>
+			<div class="flex-example">
+				<button class="btn">
+					<strong>1</strong>
+					<br> This appears first in source order.
+				</button>
+				<button class="btn">
+					<strong>2</strong>
+					<br> This appears second in source order.
+				</button>
+				<button class="btn">
+					<strong>3</strong>
+					<br> This appears third in source order.
+				</button>
+				<button class="btn">
+					<strong>4</strong>
+					<br> This appears fourth in source order.
+				</button>
+			</div>
+			
+			<h2>Re-Ordered</h2>
+			<div class="flex-example shuffled">
+				<button class="btn">
+					<strong>1</strong>
+					<br> This appears first in source order.
+				</button>
+				<button class="btn">
+					<strong>2</strong>
+					<br> This appears second in source order.
+				</button>
+				<button class="btn">
+					<strong>3</strong>
+					<br> This appears third in source order.
+				</button>
+				<button class="btn">
+					<strong>4</strong>
+					<br> This appears fourth in source order.
+				</button>
+			</div>
+			
+			<h2>Re-Ordered Links</h2>
+			<div id="reordered-links-container">
+				<div class="flex-example shuffled">
+					<a href="#" class="btn">
+						<strong>1</strong>
+						<br> This appears first in source order.
+					</a>
+					<a href="#" class="btn">
+						<strong>2</strong>
+						<br> This appears second in source order.
+					</a>
+					<a href="#" class="btn">
+						<strong>3</strong>
+						<br> This appears third in source order.
+					</a>
+					<a href="#" class="btn">
+						<strong>4</strong>
+						<br> This appears fourth in source order.
+					</a>
+				</div>
+			</div>
+			
+			<button id="insert-nodes-above">Insert nodes above to test mutation observer</button>
+			
+			<div id="insertion-area"></div>
+			
+			<h2>Re-Ordered div elements with tabindex = 0 and role="button"</h2>
+			<div class="flex-example shuffled">
+				<div role="button" tabindex="0" class="btn">
+					<strong>1</strong>
+					<br> This appears first in source order.
+				</div>
+				<div role="button" tabindex="0" class="btn">
+					<strong>2</strong>
+					<br> This appears second in source order.
+				</div>
+				<div role="button" tabindex="0" class="btn">
+					<strong>3</strong>
+					<br> This appears third in source order.
+				</div>
+				<div role="button" tabindex="0" class="btn">
+					<strong>4</strong>
+					<br> This appears fourth in source order.
+				</div>
+			</div>
+			
+			<h2>Re-Ordered with 3rd element set to <code>display: none</code></h2>
+			<div class="flex-example shuffled">
+				<button class="btn">
+					<strong>1</strong>
+					<br> This appears first in source order.
+				</button>
+				<button class="btn">
+					<strong>2</strong>
+					<br> This appears second in source order.
+				</button>
+				<button class="btn hidden">
+					<strong>3</strong>
+					<br> This appears third in source order.
+				</button>
+				<button class="btn">
+					<strong>4</strong>
+					<br> This appears fourth in source order.
+				</button>
+			</div>
+			
+			<h2>Re-Ordered with 2nd element's <code>hidden</code> attribute set</h2>
+			<div class="flex-example shuffled">
+				<button class="btn">
+					<strong>1</strong>
+					<br> This appears first in source order.
+				</button>
+				<button class="btn" hidden>
+					<strong>2</strong>
+					<br> This appears second in source order.
+				</button>
+				<button class="btn">
+					<strong>3</strong>
+					<br> This appears third in source order.
+				</button>
+				<button class="btn">
+					<strong>4</strong>
+					<br> This appears fourth in source order.
+				</button>
+			</div>
+			
+			<p>
+				This example is based on one originally used in the excellent post <a href="http://adrianroselli.com/2015/10/html-source-order-vs-css-display-order.html">HTML Source Order vs CSS Display Order</a>
+				by <a href="http://adrianroselli.com/">Adrian Roselli</a>.
+			</p>
+		</main>
+		<script src="js/fixFirefoxFlexbox.js"></script>
+		<script>
+			var buttonEl = document.getElementById('insert-nodes-above'),
+				containerEl = document.getElementById('reordered-links-container'),
+				insertionAreaEl = document.getElementById('insertion-area');
+				
+			buttonEl.addEventListener('click', function() {
+				if (insertionAreaEl.innerHTML.trim() === '') {
+					insertionAreaEl.innerHTML = '<h2>JS inserted Nodes (to test mutation observer)</h2>'
+				}
+				insertionAreaEl.innerHTML += containerEl.innerHTML;
+			})
+		</script>
+	</body>
+</html>

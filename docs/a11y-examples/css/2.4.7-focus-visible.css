@@ -1,0 +1,45 @@
+@import "shared/reset.css";
+@import "shared/a11y.css";
+
+body {
+	margin: 1em;
+	line-height: 1.4;
+	font-family: "Helvetica", "Arial", sans-serif;
+}
+
+fieldset {
+	margin-top: 1em;
+	border: solid 1px #ccc;
+	padding: 1em;
+}
+
+label {
+	font-weight: bold;
+	display: block;
+	margin-top: 1em;
+}
+
+iframe {
+	border: solid 1px red;
+	width: 100%;
+}
+
+.focusable-element-container {
+	margin-left: 1em;
+}
+
+.focusable-element-container label {
+	display: inline-block;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+p {
+	margin-bottom: 1em;
+}

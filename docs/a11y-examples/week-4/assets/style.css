@@ -1,0 +1,21 @@
+.breadcrumb>.active {
+    color: #716f6f
+}
+.breadcrumb-item a {
+    text-decoration: underline;
+    color: #0265bb;
+}
+.breadcrumb-item a:focus {
+    outline-offset: 5px;
+}
+#pause {
+    float:left;
+}
+#pause[src="assets/play.png"] {
+    width:44px;
+    height:27px;
+}
+#pause[src="assets/pause.png"] {
+    width:57px;
+    height:27px;
+}
