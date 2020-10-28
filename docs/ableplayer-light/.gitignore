@@ -1,0 +1,8 @@
+.DS_Store
+demos/*
+media/*
+test.html
+thirdparty/jwplayer.*
+thirdparty/jquery-*.js
+node_modules/
+translations/???.js
