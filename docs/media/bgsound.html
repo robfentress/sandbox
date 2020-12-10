@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="lib/is-element-supported/is-element-supported.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Hokies!</title>
+    <script>
+
+        $(document).ready(function () {
+            var bgsound;
+            if (isElementSupported('bgsound')) {
+                bgsound = document.createElement('bgsound');
+                bgsound.setAttribute('src', 'media/champions.midi');
+                bgsound.setAttribute('loop', 'infinite');
+                $('#audio').append(bgsound);
+            } else {
+                bgsound = document.createElement('audio');
+                bgsound.setAttribute('src', 'media/champions.mp3');
+                bgsound.setAttribute('loop', true);
+                bgsound.setAttribute('muted', true);
+                $('#audio').append(bgsound);
+                bgsound.setAttribute('muted', false);
+                bgsound.play();
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <header class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div>Virginia Tech</div>
+            <p>Ut Prosim / That I May Serve</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/about.html">About</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Go Hokies</li>
+                    </ol>
+                </nav>
+                <main class="container">
+                    <h1>Go Hokies!</h1>
+                    <p>What's a Hokie?</p>
+                    <p>We are.</p>
+                    <p>At Virginia Tech, we're reimagining how education and technology intersect. This approach
+                        transforms
+                        the ways
+                        we teach and learn, perform research, and engage with communities around the world.</p>
+                    <img src="https://github.com/robfentress/AU/raw/master/images/hokie.gif" width="100%"
+                        alt="Dancing Hokie Bird macot">
+                    <div id="audio"></div>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

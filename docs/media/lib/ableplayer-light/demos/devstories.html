@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Native Video Test</title>
+</head>
+<body>
+    <h1>Native <code>video</code> test…</h1>
+
+<video
+  controls
+  style="width:640px;height:360px;"
+  poster="../media/poster.png"
+>
+  <source
+    src="../media/devstories.webm"
+    type='video/webm;codecs="vp8, vorbis"'
+  />
+  <source
+    src="../media/devstories.mp4"
+    type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
+  />
+  <track
+    src="../media/devstories-en.vtt"
+    label="English subtitles"
+    kind="subtitles"
+    srclang="en"
+    default
+  />
+</video>
+</body>
+</html>
