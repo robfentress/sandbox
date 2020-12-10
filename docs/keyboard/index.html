@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>World's smallest text editor</title>
+    <link href="css/styles.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h1>World's smallest text editor</h1>
+    <p>Hey, look at this! It&apos;s the world&apos;s simplest text editor that supports indent! </p>
+    <p>Place your cursor in the field, type some text, and then hit the <kbd>Tab</kbd> key to indent the text,
+        and the <kbd>Shift</kbd> + <kbd>Tab</kbd> keys to outdent.</p>
+    <div><label for="input">Input:</label></div>
+    <textarea name="input" id="input" cols="75" rows="7"></textarea>
+    <p>Output:</p>
+    <div><span id="indentation" role="region" aria-live="polite" class="sr"></span>
+        <pre name="output" id="output" style="position: relative"> </pre>
+    </div>
+    <hr />
+    What if I wanted to click <a href="youcheated.html">this link here</a> using only the keyboard after I had placed
+    focus in the Input field above?
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var left = 0;
+            $('#input').on('keydown keyup blur', function (e) {
+                $('#output').text($(this).val() + ' ');
+
+                if (e.which === 9 && !e.shiftKey) {
+                    indent();
+                    e.preventDefault();
+                }
+                if (e.which === 9 && e.shiftKey) {
+                    outdent();
+                    e.preventDefault();
+                }
+            });
+            var indent = function () {
+                left += 10;
+                $("#indentation").text('Left indent = ' + left);
+                $('#output').css('left', left + 'px')
+            }
+            var outdent = function () {
+                left -= 10;
+                $("#indentation").text('Left indent = ' + left);
+                $('#output').css('left', left + 'px')
+            }
+        });
+
+    </script>
+</body>
+
+</html>

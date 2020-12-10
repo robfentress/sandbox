@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>World's smallest text editor</title>
+    <script type="text/javascript">
+        var oDoc;
+
+        function initDoc() {
+            oDoc = document.getElementById("textBox");
+            $(oDoc).on('keydown keyup blur', function (e) {
+
+                if (e.which === 9 && !e.shiftKey) {
+                    if (e.type === 'keydown') document.execCommand('indent', false);
+                    e.preventDefault();
+                }
+                if (e.which === 9 && e.shiftKey) {
+                    if (e.type === 'keydown') document.execCommand('outdent', false);
+                    e.preventDefault();
+                }
+            });
+
+            $("#indent").on('click', function (e) {
+                document.execCommand('indent', false);
+                oDoc.focus();
+            });
+
+            $("#outdent").on('click', function (e) {
+                document.execCommand('outdent', false);
+                oDoc.focus();
+            });
+        }
+
+        function formatDoc(sCmd, sValue) {
+            document.execCommand(sCmd, false, sValue);
+            oDoc.focus();
+        }
+    </script>
+    <style type="text/css">
+        .intLink {
+            cursor: pointer;
+        }
+
+        img.intLink {
+            border: 0;
+        }
+
+        #textBox {
+            width: 540px;
+            height: 200px;
+            border: 1px #000000 solid;
+            padding: 12px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body onload="initDoc();">
+    <h1>World&apos;s smallest text editor</h1>
+    <p>Hey, look at this! It&apos;s the world&apos;s simplest text editor that supports indent! </p>
+    <p>Try experimenting around with different ways to indent and outdent text.</p>
+    <div><label for="textBox">Text Editor:</label></div>
+    <div id="toolBar2">
+        <img class="intLink" id="outdent" title="Delete indentation"
+            src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
+        <img class="intLink" id="indent" title="Add indentation"
+            src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
+    </div>
+    <div id="textBox" contenteditable="true">
+        <p>Edit me</p>
+    </div>
+
+    <p>Learn more about <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content">making
+            content editable</a></p>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+</body>
+
+</html>

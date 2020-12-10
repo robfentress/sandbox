@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>World's smallest text editor</title>
+    <style>
+        #wrap {
+            /* width: 95%;
+            max-width: 33.75rem;
+            height: 12.5rem;
+            border: 1px #000000 solid;
+            padding: 0.75rem;
+            overflow: scroll; */
+            cursor: text;
+border: 1px solid #ccc;
+font: medium -moz-fixed;
+font: -webkit-small-control;
+height: 200px;
+overflow: auto;
+padding: 2px;
+resize: both;
+-moz-box-shadow: inset 0px 1px 2px #ccc;
+-webkit-box-shadow: inset 0px 1px 2px #ccc;
+box-shadow: inset 0px 1px 2px #ccc;
+        }
+
+        #textarea {
+            background-color: aqua;
+            border: none;
+            outline: none;
+            min-height:199px;
+            margin:0;
+            padding:0
+        }
+    </style>
+</head>
+
+<body>
+    <h1>World&apos;s smallest text editor</h1>
+    <p>Hey, look at this! It&apos;s the world&apos;s simplest text editor that supports indent! </p>
+    <p>Try experimenting around with different ways to indent and outdent text.</p>
+    <div><label for="textarea"></label>Text Editor:</label></div>
+    <img tabindex="-1" class="intLink" id="outdent" title="Indent"
+        src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
+    <img tabindex="-1" class="intLink" id="indent" title="Outdent"
+        src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
+    <div id="wrap">
+        <div id="textarea" tabindex="0" contenteditable="true">
+            <div>Edit me</div>
+        </div>
+    </div>
+
+    <p>Learn more about <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content">making
+            content editable</a></p>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var left = 10;
+            $("#indent").on('click', function (e) { indent(); });
+            $("#outdent").on('click', function (e) { outdent(); });
+            $("#textarea").on('keydown keyup blur', function (e) {
+
+                if (e.which === 9 && !e.shiftKey) {
+                    if (e.type === 'keydown') indent();
+                    e.preventDefault();
+                }
+                if (e.which === 9 && e.shiftKey) {
+                    if (e.type === 'keydown') outdent();
+                    e.preventDefault();
+                }
+            });
+            var indent = function () {
+                left += 10;
+                $('#textarea').css('padding-left', left + 'px');
+            }
+            var outdent = function () {
+                if (left > 0) {
+                    left -= 10;
+                    $('#textarea').css('padding-left', left + 'px');
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

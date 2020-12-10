@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link href="css/styles.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .tab {
+            padding: 1em;
+            position: relative;
+            bottom: -1px;
+            margin-bottom: 0;
+            border: 1px solid black;
+        }
+
+        .selectedtab {
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+
+        .unselectedtab {
+            background-color: lavender;
+            border-bottom: 1px solid black;
+        }
+
+        .panel {
+            border: 1px solid black;
+            padding: 1em;
+            margin-top: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Click in the field below and then hit the <kbd>Tab</kbd> key twice.</p>
+    <p style="padding-bottom: 1em;"><label>Random text field: <input type="text"
+                placeholder="Click here first then tab twice!" style="width:20em" /></label></p>
+    <p>
+        <a href="#" id="tab1" class="tab selectedtab">Tab 1</a>
+        <a href="#" id="tab2" class="tab unselectedtab">Tab 2</a>
+    </p>
+    <div class="panel" id="tabpanel1">
+        <p>
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.</p>
+        <p style="color: #8b0000; background-color: #ffff00; border: 2px solid #8b0000; padding: 1em;">How can I <a
+                href="#">activate this link</a> with a keyboard?</p>
+        <p>
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.
+            Here is a whole bunch of text associated with tab 1.</p>
+    </div>
+    <div id="tabpanel2" class="panel" style="display:none;">
+        <p>
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.
+            Here is a whole bunch of text associated with tab 2.</p>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#tab1').on('focus', function () {
+                $("#tabpanel1").show();
+                $('#tab1').addClass("selectedtab").removeClass("unselectedtab");
+                $('#tabpanel2').hide();
+                $('#tab2').addClass("unselectedtab").removeClass("selectedtab");
+            });
+            $('#tab2').on('focus', function () {
+                $("#tabpanel2").show();
+                $('#tab2').addClass("selectedtab").removeClass("unselectedtab");
+                $('#tabpanel1').hide();
+                $('#tab1').addClass("unselectedtab").removeClass("selectedtab");
+            });
+        });
+    </script>
+</body>
+
+</html>
