@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fa {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .fa-expand:before {
+            content: "";
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Bare link with href, link text, and aria-label override</h2>
+    <a href="#" aria-label="overide link text, href and aria-label">link text, href, and aria-label</a>
+    <h2>Bare link with href, no link text, and aria-label override</h2>
+    <a href="#" aria-label="override link with href, no link text, and aria-label"></a>
+    <h2>Bare link with href, no link text, and aria-label override</h2>
+    <a href="#" aria-label="override link with href, no link text, and aria-label"></a>
+    <h2>Bare link with href, font icon, and aria-label override</h2>
+    <a href="#" aria-label="override link with href, font icon, and aria-label override"><i
+            class="fa fa-expand"></i></a>
+    <h2>
+        h2
+        <a title="Expand All" style="display: block">
+            <i class="fa fa-expand"></i>
+        </a>
+    </h2>
+    spacer3
+    <h2>
+        text in front of link
+        <a title="Expand All">
+            <i class="fa fa-expand"></i>
+        </a>
+    </h2>
+</body>
+
+</html>
